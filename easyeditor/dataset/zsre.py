@@ -36,15 +36,15 @@ class ZsreDataset(Dataset):
                 if config.tokenizer_name is not None
                 else config.model.name
             )
-            # tokenizer = AutoTokenizer.from_pretrained("THUDM/chatglm2-6b", trust_remote_code=True)
-            tokenizer = getattr(transformers, config.tokenizer_class).from_pretrained(
-                tok_name, trust_remote_code=True
-            )
+            tokenizer = AutoTokenizer.from_pretrained(tok_name, trust_remote_code=True)
+            # tokenizer = getattr(transformers, config.tokenizer_class).from_pretrained(
+            #     tok_name, trust_remote_code=True
+            # )
             if isinstance(tokenizer, GPT2Tokenizer) or isinstance(tokenizer, GPT2TokenizerFast):
                 tokenizer.pad_token_id = tokenizer.eos_token_id
                 tokenizer.padding_side = 'left'
                 print('GPTTokenizer Detected, Set pad token id and left padding!!!')
-            elif isinstance(tokenizer, LlamaTokenizer):
+            elif isinstance(tokenizer, LlamaTokenizer) or "Llama" in tok_name:
                 tokenizer.pad_token_id = tokenizer.eos_token_id
                 tokenizer.padding_side = 'left'
                 print('LlamaTokenizer Detected, Set pad token id and left padding!!!')

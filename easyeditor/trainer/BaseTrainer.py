@@ -115,8 +115,9 @@ class BaseTrainer:
 
     def save_state(self, stats):
         if (self.config.debug and not self.config.save) or self.config.eval_only:
+            LOG.info("NOT Saving model.")
             return
-
+        LOG.info("Saving model...")
         obj = {
             "model": self.model.state_dict(),
             "opt": self.opt.state_dict() if self.config.alg!='MALMEN' else self.model.opt.state_dict(),
@@ -163,6 +164,8 @@ class BaseTrainer:
                 self.config.max_iters = self.config.max_epochs * len(self.train_set)
             if self.config.alg == 'MALMEN':
                 self.config.max_iters = math.ceil(self.config.max_iters / self.config.batch_size)
+            # ! consider batch size to match operation in MEND
+            self.config.max_iters *= self.config.batch_size
             LOG.info(f'MAX EPOCH: {self.config.max_epochs}, set max iters to {self.config.max_iters}')
         if self.config.alg == 'MALMEN':
             n_edits_step = math.ceil(self.config.n_edits / self.config.batch_size)
@@ -176,10 +179,11 @@ class BaseTrainer:
         self.global_iter = 0
         should_stop = False
         n_edits_batch = []
-        for epoch in range(self.epoches):
+        from tqdm import tqdm
+        for epoch in tqdm(range(self.epoches), desc=f"Training {self.config.alg}"):
             if should_stop:
                 break
-            for i, batch in enumerate(self.train_loader):
+            for i, batch in tqdm(enumerate(self.train_loader), total=len(self.train_loader), desc=f"epoch {epoch}"):
                 self.global_iter += 1
                 if self.global_iter >= self.config.max_iters:
                     should_stop = True
@@ -205,6 +209,9 @@ class BaseTrainer:
                     else:
                         val_info = self.validate(steps=self.config.val_steps)
                     self.echo(self.global_iter, val_info)
+                    # ! this is a bug from original code that they didn't record validation metric and NOT using early stopping.
+                    LOG.info("Recording validation to EarlyStopper")
+                    stopper.update(self.global_iter, val_info)
                     if True:
                         self.save_state(val_info)  # New best
                     if stopper.should_stop():

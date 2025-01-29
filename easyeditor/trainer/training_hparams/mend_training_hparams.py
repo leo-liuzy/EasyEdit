@@ -8,6 +8,7 @@ import yaml
 class MENDTrainingHparams(HyperParams):
 
     # Model
+    alg_name: str
     model_name: str
     model_class: str
     tokenizer_class: str
@@ -21,6 +22,7 @@ class MENDTrainingHparams(HyperParams):
     lr: float
     edit_lr: float
     lr_lr: float
+    lr_scale: float
     seed: int
     debug: bool
     cedit: float

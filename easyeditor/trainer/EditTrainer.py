@@ -190,6 +190,8 @@ class EditTrainer(BaseTrainer):
             
         if steps is None or steps > len(self.val_set):
             steps = len(self.val_set)
+        # ! consider batch size to match operation in MEND
+        steps /= self.config.val_batch_size
 
         if log:
             LOG.info(f"Beginning evaluation for {steps} steps...")

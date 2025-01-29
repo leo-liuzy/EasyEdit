@@ -748,10 +748,11 @@ def test_IKE_GPTJ():
     return metrics, edited_model
 
 
-def test_MEND_Meta_Train_Llama():
-    training_hparams = MENDTrainingHparams.from_hparams('./hparams/TRAINING/MEND/llama-7b.yaml')
-    train_ds = ZsreDataset('./data/zsre_mend_train.json', config=training_hparams)
-    eval_ds = ZsreDataset('./data/zsre_mend_eval.json', config=training_hparams)
+def test_MEND_Meta_Train_Llama(args):
+    training_hparams = MENDTrainingHparams.from_hparams(args.config_path)
+    # training_hparams = MENDTrainingHparams.from_hparams('./hparams/MEND/llama3.2-3B.yaml')
+    train_ds = ZsreDataset('./data/zsre/zsre_mend_train.json', config=training_hparams)
+    eval_ds = ZsreDataset('./data/zsre/zsre_mend_eval.json', config=training_hparams)
     trainer = EditTrainer(
         config=training_hparams,
         train_set=train_ds,
@@ -2866,6 +2867,14 @@ def test_WISE():
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description='Description of your program')
+    parser.add_argument(
+        '--config_path', 
+        type=str, 
+        required=False,
+    )
+    args = parser.parse_args()
     # metrics, edited_model = test_KN()
 
     # metrics, edited_model = test_FT()
@@ -2882,7 +2891,7 @@ def main():
     # test_MEMIT()
     # test_EMMET()
     # test_MEND_Meta_Train()
-    test_MEND()
+    # test_MEND()
     # test_KE()
     # test_SERAC_Counterfacat_Train()
     # test_SERAC_Zsre_Train()
@@ -2890,7 +2899,7 @@ def main():
     # test_IKE()
     # test_IKE_2()
     # test_IKE_Llama()
-    # test_MEND_Meta_Train_Llama()
+    test_MEND_Meta_Train_Llama(args)
     # test_SERAC_Zsre_Train_Llama()
     # test_MEND_Llama()
     # test_ROME_GPTJ()
