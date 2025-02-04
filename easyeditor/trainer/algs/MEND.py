@@ -114,9 +114,7 @@ class GradientTransform(nn.Module):
         u_ = u.view(-1, u.shape[-1])
         v_ = v.view(-1, v.shape[-1])
 
-        nz_mask = (u_ != 0).any(-1) * (v_ != 0).any(
-            -1
-        )  # Skip batch elements with zero grad
+        nz_mask = (u_ != 0).any(-1) * (v_ != 0).any(-1)  # Skip batch elements with zero grad
         u_ = u_[nz_mask]
         v_ = v_[nz_mask]
 
@@ -131,17 +129,11 @@ class GradientTransform(nn.Module):
                     self.norm_init = True
                 else:
                     self.k += 1
-                    self.u_mean, self.u_s = update_counter(
-                        u_[idx], self.u_mean, self.u_s, self.k
-                    )
-                    self.v_mean, self.v_s = update_counter(
-                        v_[idx], self.v_mean, self.v_s, self.k
-                    )
+                    self.u_mean, self.u_s = update_counter(u_[idx], self.u_mean, self.u_s, self.k)
+                    self.v_mean, self.v_s = update_counter(v_[idx], self.v_mean, self.v_s, self.k)
 
             if self.k < 2:
-                raise RuntimeError(
-                    f"Can't perform normalization with only {self.k} samples so far"
-                )
+                raise RuntimeError(f"Can't perform normalization with only {self.k} samples so far")
             self.u_std = (self.u_s / (self.k - 1)) ** 0.5
             self.v_std = (self.v_s / (self.k - 1)) ** 0.5
 
@@ -157,31 +149,25 @@ class GradientTransform(nn.Module):
             out1, out2 = output.split([u.shape[-1], v.shape[-1]], -1)
             return out1, out2
         else:
-            return self.mlp1(u_input, mode=param_idx), self.mlp2(
-                v_input, mode=param_idx
-            )
+            return self.mlp1(u_input, mode=param_idx), self.mlp2(v_input, mode=param_idx)
 
 
 class MEND(EditableModel):
     def get_shape(self, p):
         # We need to flip the shapes since OpenAI gpt2 uses convs instead of linear
-        return (
-            p.shape
-            if isinstance(self.model, transformers.GPT2LMHeadModel)
-            else (p.shape[1], p.shape[0])
-        )
+        return p.shape if isinstance(self.model, transformers.GPT2LMHeadModel) else (p.shape[1], p.shape[0])
 
     def __init__(self, model, config, model_constructor, mend=None, edit_lrs=None):
         super().__init__(model, config, model_constructor)
 
-        if not str(self.config.device).startswith('cuda'):
-            self.config.device = f'cuda:{self.config.device}'
+        if not str(self.config.device).startswith("cuda"):
+            self.config.device = f"cuda:{self.config.device}"
 
         if edit_lrs is None:
-            edit_lrs = nn.Parameter(
-                torch.tensor([config.edit_lr] * len(self.config.inner_params))
-            )
+            edit_lrs = nn.Parameter(torch.tensor([config.edit_lr] * len(self.config.inner_params)))
         self.edit_lrs = edit_lrs
+        # print("edit_lrs", self.edit_lrs)
+        # print("config.edit_lr", config.edit_lr)
 
         if not hasattr(self.model, "handles"):
             hook_model(self.model, self.config.inner_params)
@@ -189,9 +175,7 @@ class MEND(EditableModel):
 
         if config.shared:
             shape_dict = defaultdict(list)
-            for n, p in _inner_params(
-                model.named_parameters(), self.config.inner_params
-            ):
+            for n, p in _inner_params(model.named_parameters(), self.config.inner_params):
                 shape_dict[self.get_shape(p)].append(n)
             self.shape_dict = shape_dict
 
@@ -199,22 +183,13 @@ class MEND(EditableModel):
             if not config.shared:
                 self.mend = nn.ModuleDict(
                     {
-                        n.replace(".", "#"): GradientTransform(
-                            *self.get_shape(p), config
-                        )
-                        for (n, p) in _inner_params(
-                            model.named_parameters(), self.config.inner_params
-                        )
+                        n.replace(".", "#"): GradientTransform(*self.get_shape(p), config)
+                        for (n, p) in _inner_params(model.named_parameters(), self.config.inner_params)
                     }
                 )
             else:
                 self.mend = nn.ModuleDict(
-                    {
-                        str(tuple(s)): GradientTransform(
-                            *s, config, len(shape_dict[s])
-                        )
-                        for s in shape_dict.keys()
-                    }
+                    {str(tuple(s)): GradientTransform(*s, config, len(shape_dict[s])) for s in shape_dict.keys()}
                 )
             if self.config.model_parallel:
                 self.mend.to(deque(self.model.parameters(), maxlen=1)[0].device)
@@ -224,12 +199,8 @@ class MEND(EditableModel):
             self.mend = mend
 
     def state_dict(self, destination=None, prefix="", keep_vars=False):
-        state_dict = super().state_dict(
-            prefix=prefix, keep_vars=keep_vars
-        )  # Get default state dict
-        model_keys = self.model.state_dict(
-            prefix=prefix, keep_vars=keep_vars
-        ).keys()  # Remove model params
+        state_dict = super().state_dict(prefix=prefix, keep_vars=keep_vars)  # Get default state dict
+        model_keys = self.model.state_dict(prefix=prefix, keep_vars=keep_vars).keys()  # Remove model params
         for k in model_keys:
             del state_dict[f"model.{k}"]
         state_dict["model_config"] = self.model.config  # Include model config
@@ -245,85 +216,84 @@ class MEND(EditableModel):
 
         res = super().load_state_dict(state_dict, False)
         # We should only have missing keys for the model, and no unexpected keys
-        assert (
-            len([k for k in res.missing_keys if not k.startswith("model.")]) == 0
-        ), "Should only have missing keys for model, got " + str(
-            [k for k in res.missing_keys if not k.startswith("model.")]
+        assert len([k for k in res.missing_keys if not k.startswith("model.")]) == 0, (
+            "Should only have missing keys for model, got "
+            + str([k for k in res.missing_keys if not k.startswith("model.")])
         )
         assert len(res.unexpected_keys) == 0, "Shouldn't have any unexpected keys"
         return res
 
     def forward(self, *inputs, **kwargs):
-        if 'minigpt4' in self.config.model_name.lower() or 'blip' in self.config.model_name.lower():
+        if "minigpt4" in self.config.model_name.lower() or "blip" in self.config.model_name.lower():
             outputs = self.model(*inputs, **kwargs)
-        elif 'gpt' in self.config.model_name.lower():
-            outputs = _logits(self.model(input_ids=kwargs['input_ids'], attention_mask=kwargs['attention_mask']))
+        elif "gpt" in self.config.model_name.lower():
+            outputs = _logits(self.model(input_ids=kwargs["input_ids"], attention_mask=kwargs["attention_mask"]))
             # outputs = outputs[:, -kwargs['labels'].shape[-1]:, :]
-        elif 'llama' in self.config.model_name.lower():
-            outputs = _logits(self.model(input_ids=kwargs['input_ids'], attention_mask=kwargs['attention_mask']))
+        elif "llama" in self.config.model_name.lower():
+            outputs = _logits(self.model(input_ids=kwargs["input_ids"], attention_mask=kwargs["attention_mask"]))
             # outputs = outputs[:, -kwargs['labels'].shape[-1]:, :]
-        elif 'chatglm2' in self.config.model_name.lower():
-            outputs = _logits(self.model(input_ids=kwargs['input_ids'], attention_mask=kwargs['attention_mask']))
+        elif "chatglm2" in self.config.model_name.lower():
+            outputs = _logits(self.model(input_ids=kwargs["input_ids"], attention_mask=kwargs["attention_mask"]))
             # outputs = outputs[:, -kwargs['labels'].shape[-1]:, :]
-        elif 'internlm' in self.config.model_name.lower():
-            outputs = _logits(self.model(input_ids=kwargs['input_ids'], attention_mask=kwargs['attention_mask']))
+        elif "internlm" in self.config.model_name.lower():
+            outputs = _logits(self.model(input_ids=kwargs["input_ids"], attention_mask=kwargs["attention_mask"]))
             # outputs = outputs[:, -kwargs['labels'].shape[-1]:, :]
-        elif 'qwen' in self.config.model_name.lower():
-            outputs = _logits(self.model(input_ids=kwargs['input_ids'], attention_mask=kwargs['attention_mask']))
+        elif "qwen" in self.config.model_name.lower():
+            outputs = _logits(self.model(input_ids=kwargs["input_ids"], attention_mask=kwargs["attention_mask"]))
             # outputs = outputs[:, -kwargs['labels'].shape[-1]:, :]
-        elif 'mistral' in self.config.model_name.lower():
-            outputs = _logits(self.model(input_ids=kwargs['input_ids'], attention_mask=kwargs['attention_mask']))
+        elif "mistral" in self.config.model_name.lower():
+            outputs = _logits(self.model(input_ids=kwargs["input_ids"], attention_mask=kwargs["attention_mask"]))
             # outputs = outputs[:, -kwargs['labels'].shape[-1]:, :]
         else:
             outputs = _logits(self.model(**kwargs))
         return outputs
-    
+
     def outer_parameters(self):
         return list(self.mend.parameters()) + [self.edit_lrs]
 
     def edit(self, batch, condition=None, detach_history=False, return_factors=False, **kwargs):
-        if 'minigpt4' in self.config.model_name.lower() or 'blip' in self.config.model_name.lower():
-            outputs = self.model(batch)        
+        if "minigpt4" in self.config.model_name.lower() or "blip" in self.config.model_name.lower():
+            outputs = self.model(batch)
             if not isinstance(outputs, torch.Tensor):
                 batch_labels = outputs.labels
                 outputs = outputs.logits
             else:
-                batch_labels = batch['labels']
-            loss = self.edit_loss_fn(self.config, outputs, batch_labels, multimodal=True)["nll"]          
-        elif 'gpt' in self.config.model_name.lower():
-            outputs = _logits(self.model(input_ids=batch['input_ids'], attention_mask=batch['attention_mask']))
+                batch_labels = batch["labels"]
+            loss = self.edit_loss_fn(self.config, outputs, batch_labels, multimodal=True)["nll"]
+        elif "gpt" in self.config.model_name.lower():
+            outputs = _logits(self.model(input_ids=batch["input_ids"], attention_mask=batch["attention_mask"]))
             # outputs = outputs[:, -batch['labels'].shape[-1]:, :]
             if not kwargs:
                 loss = self.edit_loss_fn(self.config, outputs, batch["labels"])["nll"]
             else:
                 loss = self.edit_loss_fn(self.config, outputs, batch["labels"], **kwargs)["nll"]
-        elif 'llama' in self.config.model_name.lower():
-            outputs = _logits(self.model(input_ids=batch['input_ids'], attention_mask=batch['attention_mask']))
+        elif "llama" in self.config.model_name.lower():
+            outputs = _logits(self.model(input_ids=batch["input_ids"], attention_mask=batch["attention_mask"]))
             # outputs = outputs[:, -batch['labels'].shape[-1]:, :]
             if not kwargs:
                 loss = self.edit_loss_fn(self.config, outputs, batch["labels"])["nll"]
             else:
                 loss = self.edit_loss_fn(self.config, outputs, batch["labels"], **kwargs)["nll"]
-        elif 'baichuan' in self.config.model_name.lower():
-            outputs = _logits(self.model(input_ids=batch['input_ids'], attention_mask=batch['attention_mask']))
+        elif "baichuan" in self.config.model_name.lower():
+            outputs = _logits(self.model(input_ids=batch["input_ids"], attention_mask=batch["attention_mask"]))
             # outputs = outputs[:, -batch['labels'].shape[-1]:, :]
-            loss = self.edit_loss_fn(self.config, outputs, batch["labels"])["nll"] 
-        elif 'chatglm2' in self.config.model_name.lower():
-            outputs = _logits(self.model(input_ids=batch['input_ids'], attention_mask=batch['attention_mask']))
+            loss = self.edit_loss_fn(self.config, outputs, batch["labels"])["nll"]
+        elif "chatglm2" in self.config.model_name.lower():
+            outputs = _logits(self.model(input_ids=batch["input_ids"], attention_mask=batch["attention_mask"]))
             # outputs = outputs[:, -batch['labels'].shape[-1]:, :]
-            loss = self.edit_loss_fn(self.config, outputs, batch["labels"])["nll"]            
-        elif 'internlm' in self.config.model_name.lower():
-            outputs = _logits(self.model(input_ids=batch['input_ids'], attention_mask=batch['attention_mask']))
+            loss = self.edit_loss_fn(self.config, outputs, batch["labels"])["nll"]
+        elif "internlm" in self.config.model_name.lower():
+            outputs = _logits(self.model(input_ids=batch["input_ids"], attention_mask=batch["attention_mask"]))
             # outputs = outputs[:, -batch['labels'].shape[-1]:, :]
-            loss = self.edit_loss_fn(self.config, outputs, batch["labels"])["nll"]  
-        elif 'qwen' in self.config.model_name.lower():
-            outputs = _logits(self.model(input_ids=batch['input_ids'], attention_mask=batch['attention_mask']))
+            loss = self.edit_loss_fn(self.config, outputs, batch["labels"])["nll"]
+        elif "qwen" in self.config.model_name.lower():
+            outputs = _logits(self.model(input_ids=batch["input_ids"], attention_mask=batch["attention_mask"]))
             # outputs = outputs[:, -batch['labels'].shape[-1]:, :]
-            loss = self.edit_loss_fn(self.config, outputs, batch["labels"])["nll"]         
-        elif 'mistral' in self.config.model_name.lower():
-            outputs = _logits(self.model(input_ids=batch['input_ids'], attention_mask=batch['attention_mask']))
+            loss = self.edit_loss_fn(self.config, outputs, batch["labels"])["nll"]
+        elif "mistral" in self.config.model_name.lower():
+            outputs = _logits(self.model(input_ids=batch["input_ids"], attention_mask=batch["attention_mask"]))
             # outputs = outputs[:, -batch['labels'].shape[-1]:, :]
-            loss = self.edit_loss_fn(self.config, outputs, batch["labels"])["nll"]  
+            loss = self.edit_loss_fn(self.config, outputs, batch["labels"])["nll"]
         else:
             outputs = _logits(self.model(**batch))
             loss = self.edit_loss_fn(self.config, outputs, batch["labels"])["nll"]
@@ -336,25 +306,15 @@ class MEND(EditableModel):
         loss.backward()
 
         if self.config.shared:
-            param_idx = (
-                lambda n, p: self.shape_dict[self.get_shape(p)].index(n)
-                if self.config.shared
-                else None
-            )  # noqa: E731
+            param_idx = lambda n, p: self.shape_dict[self.get_shape(p)].index(n) if self.config.shared else None  # noqa: E731
             transformed_factors = {
-                n: self.mend[str(tuple(self.get_shape(p)))](
-                    p.__x__, p.__delta__, param_idx(n, p)
-                )
-                for n, p in _inner_params(
-                    self.model.named_parameters(), self.config.inner_params
-                )
+                n: self.mend[str(tuple(self.get_shape(p)))](p.__x__, p.__delta__, param_idx(n, p))
+                for n, p in _inner_params(self.model.named_parameters(), self.config.inner_params)
             }
         else:
             transformed_factors = {
                 n: self.mend[n.replace(".", "#")](p.__x__, p.__delta__)
-                for n, p in _inner_params(
-                    self.model.named_parameters(), self.config.inner_params
-                )
+                for n, p in _inner_params(self.model.named_parameters(), self.config.inner_params)
             }
 
         # Should be bi,bj->ji for nn.Linear, but GPT2 uses Conv1d instead...
@@ -362,18 +322,13 @@ class MEND(EditableModel):
             targ = "ij"
         else:
             targ = "ji"
-        mean_grads = {
-            n: torch.einsum(f"bi,bj->{targ}", x, delta)
-            for n, (x, delta) in transformed_factors.items()
-        }
+        mean_grads = {n: torch.einsum(f"bi,bj->{targ}", x, delta) for n, (x, delta) in transformed_factors.items()}
 
         info_dict = {}
         if return_factors:
             info_dict["factors"] = transformed_factors
         idx = 0
-        for n, p in _inner_params(
-            self.model.named_parameters(), self.config.inner_params
-        ):
+        for n, p in _inner_params(self.model.named_parameters(), self.config.inner_params):
             info_dict[f"grad/true_mag{idx}"] = p.grad.norm(2).item()
             info_dict[f"grad/pseudo_mag{idx}"] = mean_grads[n].norm(2).item()
             info_dict[f"grad/true_std{idx}"] = p.grad.std().item()
@@ -391,7 +346,7 @@ class MEND(EditableModel):
 
         edited_model = self.model
         if not isinstance(edited_model, higher.patch._MonkeyPatchBase):
-            if 'minigpt4' in self.config.model_name.lower() or 'blip' in self.config.model_name.lower():
+            if "minigpt4" in self.config.model_name.lower() or "blip" in self.config.model_name.lower():
                 edited_model = _make_functional(edited_model, in_place=True)
             else:
                 edited_model = monkeypatch(edited_model, in_place=True)
@@ -454,16 +409,8 @@ if __name__ == "__main__":
 
     assert torch.allclose(orig_logits, post_logits)
 
-    orig_param = [
-        p
-        for (n, p) in mend.model.named_parameters()
-        if n == config.inner_params[-1]
-    ][0]
-    edited_param = [
-        p
-        for (n, p) in edited.model.named_parameters()
-        if n == config.inner_params[-1]
-    ][0]
+    orig_param = [p for (n, p) in mend.model.named_parameters() if n == config.inner_params[-1]][0]
+    edited_param = [p for (n, p) in edited.model.named_parameters() if n == config.inner_params[-1]][0]
 
     LOG.info((orig_param - edited_param).abs().max())
     edited.eval()
@@ -473,9 +420,7 @@ if __name__ == "__main__":
         edited.edit_loss_fn(edited(x).logits, x)["nll"],
     )
     edited2 = edited.edit(x, masks=torch.ones_like(x), labels=x)
-    LOG.info(
-        mend(x, labels=x).loss, edited(x, labels=x).loss, edited2(x, labels=x).loss
-    )
+    LOG.info(mend(x, labels=x).loss, edited(x, labels=x).loss, edited2(x, labels=x).loss)
 
 
 def monkeypatch(
@@ -519,14 +464,9 @@ def monkeypatch(
         if copy_initial_weights and not in_place:
             params = _utils.get_func_params(module, device=device)
         elif in_place:
-            params = [
-                p if device is None else p.to(device) for p in module.parameters()
-            ]
+            params = [p if device is None else p.to(device) for p in module.parameters()]
         else:  # Standard behavior
-            params = [
-                p.clone() if device is None else p.clone().to(device)
-                for p in module.parameters()
-            ]
+            params = [p.clone() if device is None else p.clone().to(device) for p in module.parameters()]
         buffer_sync(module, fmodule, device)
         fmodule.update_params(params)
 

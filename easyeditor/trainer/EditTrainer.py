@@ -33,6 +33,49 @@ class EditTrainer(BaseTrainer):
         else:
             self.lr_opt = None
 
+    def simple_edit(self, batch, training: bool):
+        self.model.train(training)
+        self.original_model.train(training)
+
+        with torch.set_grad_enabled(training):
+            # Editing loss
+            pre_edit_logits = self.model(**batch["edit_inner"])
+            targ = batch["edit_inner"]["labels"]
+            pre_edit_target_logits = pre_edit_logits[:, :-1]
+            pre_edit_target_logits = pre_edit_target_logits[:, -targ.size(1) :]
+            pre_edit_gen = self.val_set.tok.decode(pre_edit_target_logits.argmax(-1)[0])
+
+        if "cond" in batch:
+            edited_model, model_info = self.model.edit(batch["edit_inner"], batch["cond"])
+        else:
+            edited_model, model_info = self.model.edit(batch["edit_inner"])
+
+        with torch.set_grad_enabled(training):
+            # Editing loss
+            post_edit_logits = edited_model(**batch["edit_inner"])
+            targ = batch["edit_inner"]["labels"]
+            target_logits = post_edit_logits[:, :-1]
+            target_logits = target_logits[:, -targ.size(1) :]
+            post_edit_gen = self.val_set.tok.decode(target_logits.argmax(-1)[0])
+
+        info_dict = {}
+        with torch.no_grad():
+            post_edit_dict = self.model.edit_loss_fn(self.config, post_edit_logits, batch["edit_inner"]["labels"])
+            pre_edit_dict = self.model.edit_loss_fn(self.config, pre_edit_logits, batch["edit_inner"]["labels"])
+
+        info_dict["post_edit/acc"] = post_edit_dict["acc"].item()
+        info_dict["post_edit/log_prob"] = post_edit_dict["log_prob"].item()
+        info_dict["post_edit/prob"] = post_edit_dict["prob"].item()
+        info_dict["post_edit/target"] = self.val_set.tok.decode(targ[0])
+        info_dict["post_edit/gen"] = post_edit_gen
+
+        info_dict["pre_edit/acc"] = pre_edit_dict["acc"].item()
+        info_dict["pre_edit/log_prob"] = pre_edit_dict["log_prob"].item()
+        info_dict["pre_edit/prob"] = pre_edit_dict["prob"].item()
+        info_dict["pre_edit/target"] = self.val_set.tok.decode(targ[0])
+        info_dict["pre_edit/gen"] = pre_edit_gen
+        return edited_model, model_info, info_dict
+
     def edit_step(self, batch, training: bool):
         self.model.train(training)
         self.original_model.train(training)
@@ -52,38 +95,34 @@ class EditTrainer(BaseTrainer):
             # Editing loss
             post_edit_logits = edited_model(**batch["edit_inner"])
             l_edit = self.model.edit_loss_fn(
-                self.config, post_edit_logits, batch["edit_inner"]["labels"],
+                self.config,
+                post_edit_logits,
+                batch["edit_inner"]["labels"],
             )["nll"]
 
             # Locality loss
-            post_base_logits = edited_model(**batch['loc'])
-            kl_mask = batch["loc"].get(
-                "decoder_attention_mask", batch["loc"]["attention_mask"]
-            )
+            post_base_logits = edited_model(**batch["loc"])
+            kl_mask = batch["loc"].get("decoder_attention_mask", batch["loc"]["attention_mask"])
             if kl_mask.size(1) != base_logits.size(1):
-                base_logits = base_logits[:, -kl_mask.size(1):]
-                post_base_logits = post_base_logits[:, -kl_mask.size(1):]
+                base_logits = base_logits[:, -kl_mask.size(1) :]
+                post_base_logits = post_base_logits[:, -kl_mask.size(1) :]
             l_loc = kl_loc_loss(base_logits.detach(), post_base_logits, mask=kl_mask)
 
         l_total_edit = self.config.cedit * l_edit + self.config.cloc * l_loc
 
         if training:
             safe_backward(
-                l_total_edit, self.model.outer_parameters(), self.config.accumulate_bs, allow_unused=True if
-                self.config.alg=='MEND' and self.config.model_parallel else False
+                l_total_edit,
+                self.model.outer_parameters(),
+                self.config.accumulate_bs,
+                allow_unused=True if self.config.alg == "MEND" and self.config.model_parallel else False,
             )
 
         # Collect some useful metrics
         with torch.no_grad():
-            post_edit_dict = self.model.edit_loss_fn(
-                self.config, post_edit_logits, batch["edit_inner"]["labels"]
-            )
-            post_loc_dict = self.model.loc_loss_fn(
-                self.config, post_base_logits, batch["loc"]["labels"]
-            )
-            pre_loc_dict = self.model.loc_loss_fn(
-                self.config, base_logits, batch["loc"]["labels"]
-            )
+            post_edit_dict = self.model.edit_loss_fn(self.config, post_edit_logits, batch["edit_inner"]["labels"])
+            post_loc_dict = self.model.loc_loss_fn(self.config, post_base_logits, batch["loc"]["labels"])
+            pre_loc_dict = self.model.loc_loss_fn(self.config, base_logits, batch["loc"]["labels"])
 
         info_dict = {}
         info_dict["loss/edit"] = l_edit.item()
@@ -103,14 +142,10 @@ class EditTrainer(BaseTrainer):
         if self.config.train_base:
             with torch.no_grad():
                 original_logits = _logits(self.original_model(**batch["loc"]))
-                original_loc_dict = self.model.loc_loss_fn(
-                    original_logits, batch["loc"]["labels"]
-                )
+                original_loc_dict = self.model.loc_loss_fn(original_logits, batch["loc"]["labels"])
 
             base_logits = self.model(**batch["loc"])
-            l_base = kl_loc_loss(
-                original_logits.detach(), base_logits, mask=kl_mask.detach()
-            )
+            l_base = kl_loc_loss(original_logits.detach(), base_logits, mask=kl_mask.detach())
 
             if training:
                 safe_backward(
@@ -138,9 +173,7 @@ class EditTrainer(BaseTrainer):
         return l_total, l_edit, l_loc, l_base, info_dict
 
     def train_step(self, batch):
-        l_total, l_edit, l_loc, l_base, info_dict = self.edit_step(
-            batch, training=True
-        )
+        l_total, l_edit, l_loc, l_base, info_dict = self.edit_step(batch, training=True)
 
         if self.global_iter > 0 and self.global_iter % self.config.accumulate_bs == 0:
             grad = torch.nn.utils.clip_grad_norm_(
@@ -187,7 +220,7 @@ class EditTrainer(BaseTrainer):
     def validate(self, steps=None, log: bool = False):
         if self.val_set is None:
             return None
-            
+
         if steps is None or steps > len(self.val_set):
             steps = len(self.val_set)
         # ! consider batch size to match operation in MEND
@@ -203,14 +236,10 @@ class EditTrainer(BaseTrainer):
                 break
             _, _, _, _, info_dict = self.edit_step(batch, training=False)
             averager.add(info_dict)
+            print(f"[{val_step}]", info_dict["edit/acc"])
 
-            if (
-                log
-                and (val_step + 1) % self.config.log_interval == 0
-            ):
-                self._inline_validation_log(
-                    val_step, averager.average(), start_time, steps
-                )
+            if log and (val_step + 1) % self.config.log_interval == 0:
+                self._inline_validation_log(val_step, averager.average(), start_time, steps)
 
         if log:
             self._inline_validation_log(val_step, averager.average(), start_time, steps)

@@ -11,3 +11,5 @@ output
 scripts
 
 results_new/
+.history/
+example_output/
