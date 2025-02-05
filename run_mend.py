@@ -3,7 +3,7 @@ import hydra
 import pandas as pd
 
 from easyeditor import GraceHyperParams, MEMITHyperParams, MENDHyperParams
-from easyeditor import BaseEditor
+from easyeditor import BaseEditor, MendRewriteExecutor
 from tqdm import tqdm
 
 from knowledge_propagation.utils import vars, io
@@ -15,74 +15,93 @@ from transformers import AutoTokenizer, GenerationConfig
 
 def main(args):
     hparams = MENDHyperParams.from_hparams("hparams/MEND/llama3.2-1B.yaml")
-    hparams.edit_lr = args.edit_lr
+    # hparams.edit_lr = args.edit_lr
 
     editor = BaseEditor.from_hparams(hparams)
+    mend_rewriter = MendRewriteExecutor()
+    mend_rewriter.init_model(editor.model, editor.tok, hparams)
 
     examples = io.load_jsonlines(f"{vars.DATA_DIR}/musique_c_small/examples-page.jsonl")
 
     with hydra.initialize(config_path="../KE-by-CP/configs", version_base=None):
         cfg = hydra.compose(config_name="fft.yaml")
 
+    generation_config = GenerationConfig(
+        do_sample=cfg.generation.do_sample,
+        top_k=cfg.generation.top_k,
+        top_p=cfg.generation.top_p,
+        temperature=cfg.generation.temperature,
+        pad_token_id=editor.tok.pad_token_id,
+        bos_token_id=editor.tok.bos_token_id,
+        eos_token_id=editor.tok.eos_token_id,
+        max_new_tokens=cfg.generation.max_new_tokens,
+        num_return_sequences=cfg.generation.n_decoding_example,
+    )
     edit_metrics = []
     all_results = []
 
-    for ex in tqdm(examples[:], "MEND editing"):
+    for ex in tqdm(examples[:5], "MEND editing"):
         print("Example ID:", ex["id"])
         prompts = [q["question"] for q in ex["single_hop_efficacy"]]
-        target_new = [q["answer"] for q in ex["single_hop_efficacy"]]
+        target_news = [q["answer"] for q in ex["single_hop_efficacy"]]
+
+        targets = [(" " if target_new[0] != " " else "") + target_news for target_new in target_news]
+        sentences = [prompt + targets[i] for i, prompt in enumerate(prompts)]
+
+        sent_tok = editor.tok(sentences, padding=True, return_tensors="pt").to(f"cuda:{hparams.device}")
+        target_tok = editor.tok(targets, padding=True, return_tensors="pt", add_special_tokens=False).to(
+            f"cuda:{hparams.device}"
+        )
+
+        edited_model, metrics = mend_rewriter.edit_step(
+            dict(edit_inner=edit_inner), training=False, update_base_model=False
+        )
+
         metrics, edited_model, _ = editor.edit(
-            prompts=prompts, target_new=target_new, ground_truth=None, sequential_edit=True
+            prompts=prompts,
+            target_new=target_news,
+            ground_truth=None,
+            sequential_edit=False,
+            verbose=False,
         )
         edit_metrics.append({"id": ex["id"], "metrics": metrics})
 
-        generation_config = GenerationConfig(
-            do_sample=cfg.generation.do_sample,
-            top_k=cfg.generation.top_k,
-            top_p=cfg.generation.top_p,
-            temperature=cfg.generation.temperature,
-            pad_token_id=editor.tok.pad_token_id,
-            bos_token_id=editor.tok.bos_token_id,
-            eos_token_id=editor.tok.eos_token_id,
-            max_new_tokens=cfg.generation.max_new_tokens,
-            num_return_sequences=cfg.generation.n_decoding_example,
-        )
-        for question_type in ["multi_hop_efficacy", "single_hop_efficacy"]:
-            inferencer = QAInferencer(
-                cfg.evaluator.inferencers[0],
-                cfg.seed,
-                rag_model=None,
-                queries=ex[question_type],
-            )
-            result_df = eval_inferencer(
-                inferencer,
-                edited_model,
-                tokenizer=editor.tok,
-                generation_cfg=generation_config,
-            )
-            result_df.insert(0, "question_type", question_type)
-            result_df.insert(0, "id", ex["id"])
-            all_results.append(result_df)
-        all_results.append(result_df)
+        # for question_type in ["multi_hop_efficacy", "single_hop_efficacy"]:
+        #     inferencer = QAInferencer(
+        #         cfg.evaluator.inferencers[0],
+        #         cfg.seed,
+        #         rag_model=None,
+        #         queries=ex[question_type],
+        #     )
+        #     result_df = eval_inferencer(
+        #         inferencer,
+        #         edited_model.model,
+        #         tokenizer=editor.tok,
+        #         generation_cfg=generation_config,
+        #     )
+        #     result_df.insert(0, "question_type", question_type)
+        #     result_df.insert(0, "id", ex["id"])
+        #     all_results.append(result_df)
+        # all_results.append(result_df)
 
-    all_results = pd.concat(all_results)
+    # all_results = pd.concat(all_results)
 
-    io.dump_jsonlines(edit_metrics, f"mend_two-doc_single-edit_eval_lr{hparams.edit_lr}.jsonl")
+    # io.dump_jsonlines(edit_metrics, f"mend_two-doc_single-edit_eval_lr{hparams.edit_lr}.jsonl")
 
-    all_results.to_excel(
-        f"mend_two-doc_single-edit_eval_lr{hparams.edit_lr}.xlsx",
-        index=False,
-    )
+    # all_results.to_excel(
+    #     f"mend_two-doc_single-edit_eval_lr{hparams.edit_lr}.xlsx",
+    #     index=False,
+    # )
 
 
 if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(description="Description of your program")
-    parser.add_argument(
-        "--edit_lr",
-        type=float,
-        required=False,
-    )
+    # parser.add_argument(
+    #     "--edit_lr",
+    #     type=float,
+    #     required=False,
+    # )
     args = parser.parse_args()
     main(args)

@@ -1,0 +1,291 @@
+/home/zliu/miniconda3/envs/cpt/lib/python3.11/site-packages/timm/models/hub.py:4: FutureWarning: Importing from timm.models.hub is deprecated, please import via timm.models
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.models", FutureWarning)
+/home/zliu/miniconda3/envs/cpt/lib/python3.11/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/home/zliu/miniconda3/envs/cpt/lib/python3.11/site-packages/timm/models/registry.py:4: FutureWarning: Importing from timm.models.registry is deprecated, please import via timm.models
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.models", FutureWarning)
+WARNING: BNB_CUDA_VERSION=121 environment variable detected; loading libbitsandbytes_cuda121.so.
+This can be used to load a bitsandbytes version that is different from the PyTorch CUDA version.
+If this was unintended set the BNB_CUDA_VERSION variable to an empty string: export BNB_CUDA_VERSION=
+If you use the manual override make sure the right libcudart.so is in your LD_LIBRARY_PATH
+For example by adding the following to your .bashrc: export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:<path_to_cuda_dir/lib64
+
+2025-02-05 00:22:19,359 - easyeditor.editors.editor - INFO - Instantiating model
+02/05/2025 00:22:19 - INFO - easyeditor.editors.editor -   Instantiating model
+02/05/2025 00:22:23 - INFO - easyeditor.trainer.algs.MEND -   Hooked 9 modules
+02/05/2025 00:22:23 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/05/2025 00:22:23 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+02/05/2025 00:22:23 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/05/2025 00:22:23 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+/data/users/zliu/EasyEdit/easyeditor/models/mend/mend_main.py:47: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  d = torch.load(params.archive, map_location="cpu")
+02/05/2025 00:22:24 - INFO - easyeditor.trainer.algs.MEND -   Loaded model config doesn't match current model config.
+02/05/2025 00:22:24 - INFO - easyeditor.trainer.algs.MEND -   Loaded: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/u/zliu/datastor1/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+02/05/2025 00:22:24 - INFO - easyeditor.trainer.algs.MEND -   Current: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/home/zliu/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "float32",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+2025-02-05 00:22:24.923 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-05 00:22:25.610 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'transformers.models.llama.modeling_llama.LlamaForCausalLM'>
+2025-02-05 00:22:25.610 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-05 00:22:25.611 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+LlamaTokenizer Detected, Set pad token id and left padding!!!
+LlamaTokenizer Detected, Set pad token id and left padding!!!
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s]From v4.47 onwards, when a model cache is to be returned, `generate` will return a `Cache` instance instead by default (as opposed to the legacy tuple of tuples format). If you want to keep returning the legacy format, please set `return_legacy_cache=True`.
+Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:01<00:00,  1.51s/it]Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:01<00:00,  1.51s/it]
+2025-02-05 00:22:27.125 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-05 00:22:27.147 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/05/2025 00:22:27 - INFO - absl -   Using default tokenizer.
+2025-02-05 00:22:27.153 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+2025-02-05 00:22:27.160 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-05 00:22:27.772 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'transformers.models.llama.modeling_llama.LlamaForCausalLM'>
+2025-02-05 00:22:27.773 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-05 00:22:27.773 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s]Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.73it/s]Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.73it/s]
+2025-02-05 00:22:28.354 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-05 00:22:28.362 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/05/2025 00:22:28 - INFO - absl -   Using default tokenizer.
+2025-02-05 00:22:28.365 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+2025-02-05 00:22:28.369 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-05 00:22:29.056 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'transformers.models.llama.modeling_llama.LlamaForCausalLM'>
+2025-02-05 00:22:29.057 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-05 00:22:29.057 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s]Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.71it/s]Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.71it/s]
+2025-02-05 00:22:29.643 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-05 00:22:29.651 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/05/2025 00:22:29 - INFO - absl -   Using default tokenizer.
+2025-02-05 00:22:29.654 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+2025-02-05 00:22:29.658 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-05 00:22:30.367 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'transformers.models.llama.modeling_llama.LlamaForCausalLM'>
+2025-02-05 00:22:30.367 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-05 00:22:30.367 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s]Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.73it/s]Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.73it/s]
+2025-02-05 00:22:30.946 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-05 00:22:30.954 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/05/2025 00:22:30 - INFO - absl -   Using default tokenizer.
+2025-02-05 00:22:30.957 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+2025-02-05 00:22:30.967 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-05 00:22:31.625 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'transformers.models.llama.modeling_llama.LlamaForCausalLM'>
+2025-02-05 00:22:31.625 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-05 00:22:31.625 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s]Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.74it/s]Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.74it/s]
+2025-02-05 00:22:32.203 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-05 00:22:32.213 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/05/2025 00:22:32 - INFO - absl -   Using default tokenizer.
+2025-02-05 00:22:32.220 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+2025-02-05 00:22:32.228 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-05 00:22:32.855 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'transformers.models.llama.modeling_llama.LlamaForCausalLM'>
+2025-02-05 00:22:32.856 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-05 00:22:32.856 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s]Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.71it/s]Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.71it/s]
+2025-02-05 00:22:33.441 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-05 00:22:33.449 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/05/2025 00:22:33 - INFO - absl -   Using default tokenizer.
+2025-02-05 00:22:33.452 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+2025-02-05 00:22:33.461 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-05 00:22:34.050 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'transformers.models.llama.modeling_llama.LlamaForCausalLM'>
+2025-02-05 00:22:34.050 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-05 00:22:34.051 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s]Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.73it/s]Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.73it/s]
+2025-02-05 00:22:34.631 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-05 00:22:34.640 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/05/2025 00:22:34 - INFO - absl -   Using default tokenizer.
+2025-02-05 00:22:34.642 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+2025-02-05 00:22:34.646 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-05 00:22:35.449 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'transformers.models.llama.modeling_llama.LlamaForCausalLM'>
+2025-02-05 00:22:35.450 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-05 00:22:35.450 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s]Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.72it/s]Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.72it/s]
+2025-02-05 00:22:36.034 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-05 00:22:36.046 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/05/2025 00:22:36 - INFO - absl -   Using default tokenizer.
+2025-02-05 00:22:36.054 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+2025-02-05 00:22:36.062 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-05 00:22:36.684 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'transformers.models.llama.modeling_llama.LlamaForCausalLM'>
+2025-02-05 00:22:36.685 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-05 00:22:36.685 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s]Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.69it/s]Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.69it/s]
+2025-02-05 00:22:37.280 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-05 00:22:37.288 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/05/2025 00:22:37 - INFO - absl -   Using default tokenizer.
+2025-02-05 00:22:37.294 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+2025-02-05 00:22:37.303 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-05 00:22:37.904 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'transformers.models.llama.modeling_llama.LlamaForCausalLM'>
+2025-02-05 00:22:37.904 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-05 00:22:37.905 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s]Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.70it/s]Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.70it/s]
+2025-02-05 00:22:38.493 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-05 00:22:38.502 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/05/2025 00:22:38 - INFO - absl -   Using default tokenizer.
+2025-02-05 00:22:38.504 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)

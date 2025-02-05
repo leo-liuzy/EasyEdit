@@ -39,6 +39,7 @@ class MendRewriteExecutor:
         # Customize the gpt2xl and tokenizer
         self.model = model
         self.tokenizer = tok
+        self.config = params
         # add_padding(self.tokenizer, self.model)
 
         # Load the trained MEND model
@@ -61,103 +62,79 @@ class MendRewriteExecutor:
         self.is_init = False
         del self.model, self.tokenizer, self.alg
 
-    def edit_step(self, batch, training: bool):
+    def edit_step(self, batch, training: bool, update_base_model: bool = False):
         self.alg.train(training)
         self.alg.model.train(training)
 
         # with torch.no_grad():
         #     base_logits = self.alg(**batch["loc"])
 
+        with torch.set_grad_enabled(training):
+            # Editing loss
+            pre_edit_logits = self.alg(**batch["edit_inner"])
+            targ = batch["edit_inner"]["labels"]
+            pre_edit_target_logits = pre_edit_logits[:, :-1]
+            pre_edit_target_logits = pre_edit_target_logits[:, -targ.size(1) :]
+            pre_edit_gen = [self.tokenizer.decode(p) for p in pre_edit_target_logits.argmax(-1)]
         # Do the edit
         start = time.time()
-        if "cond" in batch:
-            edited_model, model_info = self.alg.edit(batch["edit_inner"], batch["cond"])
-        else:
-            edited_model, model_info = self.alg.edit(batch["edit_inner"])
+        edited_model, model_info = self.alg.edit(batch["edit_inner"], return_factors=True)
+
         edit_time = time.time() - start
 
         with torch.set_grad_enabled(training):
             # Editing loss
             post_edit_logits = edited_model(**batch["edit_inner"])
-            l_edit = self.alg.edit_loss_fn(
-                self.alg.config,
-                post_edit_logits,
-                batch["edit_inner"]["labels"],
-            )["nll"]
+            targ = batch["edit_inner"]["labels"]
+            target_logits = post_edit_logits[:, :-1]
+            target_logits = target_logits[:, -targ.size(1) :]
 
-            # Locality loss
-            # post_base_logits = edited_model(**batch["loc"])
-            # kl_mask = batch["loc"].get("decoder_attention_mask", batch["loc"]["attention_mask"])
-            # if kl_mask.size(1) != base_logits.size(1):
-            #     base_logits = base_logits[:, -kl_mask.size(1) :]
-            #     post_base_logits = post_base_logits[:, -kl_mask.size(1) :]
-            # l_loc = kl_loc_loss(base_logits.detach(), post_base_logits, mask=kl_mask)
+            post_edit_gen = [self.tokenizer.decode(p) for p in target_logits.argmax(-1)]
 
-        l_total_edit = self.alg.config.cedit * l_edit
-        # + self.alg.config.cloc * l_loc
-
-        if training:
-            safe_backward(
-                l_total_edit,
-                self.alg.outer_parameters(),
-                self.alg.config.accumulate_bs,
-                allow_unused=True if self.alg.config.alg == "MEND" and self.alg.config.model_parallel else False,
-            )
-
-        # Collect some useful metrics
         with torch.no_grad():
-            post_edit_dict = self.alg.edit_loss_fn(self.alg.config, post_edit_logits, batch["edit_inner"]["labels"])
-            # post_loc_dict = self.alg.loc_loss_fn(self.alg.config, post_base_logits, batch["loc"]["labels"])
-            # pre_loc_dict = self.alg.loc_loss_fn(self.alg.config, base_logits, batch["loc"]["labels"])
+            post_edit_dict = self.alg.edit_loss_fn(self.config, post_edit_logits, batch["edit_inner"]["labels"])
+            pre_edit_dict = self.alg.edit_loss_fn(self.config, pre_edit_logits, batch["edit_inner"]["labels"])
 
         info_dict = {}
-        info_dict["loss/edit"] = l_edit.item()
-        # info_dict["loss/loc"] = l_loc.item()
-        info_dict["edit/acc"] = post_edit_dict["acc"].item()
-        info_dict["edit/log_prob"] = post_edit_dict["log_prob"].item()
-        info_dict["edit/prob"] = post_edit_dict["prob"].item()
-        # info_dict["acc/pre"] = pre_loc_dict["acc"].item()
-        # info_dict["acc/post"] = post_loc_dict["acc"].item()
-        # info_dict["nll/pre"] = pre_loc_dict["nll"].item()
-        # info_dict["nll/post"] = post_loc_dict["nll"].item()
-        # info_dict["n_tokens/pre"] = post_loc_dict["n_tokens"]
-        # info_dict["n_tokens/post"] = post_loc_dict["n_tokens"]
+        info_dict["post_edit/acc"] = post_edit_dict["acc"].item()
+        info_dict["post_edit/log_prob"] = post_edit_dict["log_prob"].item()
+        info_dict["post_edit/prob"] = post_edit_dict["prob"].item()
+        info_dict["post_edit/target"] = [self.tokenizer.decode(t) for t in targ]
+        info_dict["post_edit/gen"] = post_edit_gen
+
+        info_dict["pre_edit/acc"] = pre_edit_dict["acc"].item()
+        info_dict["pre_edit/log_prob"] = pre_edit_dict["log_prob"].item()
+        info_dict["pre_edit/prob"] = pre_edit_dict["prob"].item()
+        info_dict["pre_edit/target"] = [self.tokenizer.decode(t) for t in targ]
+        info_dict["pre_edit/gen"] = pre_edit_gen
         info_dict["time/edit"] = edit_time
 
-        # Base loss
-        if self.alg.config.train_base:
-            # with torch.no_grad():
-            #     original_logits = _logits(self.alg.model(**batch["loc"]))
-            #     original_loc_dict = self.alg.loc_loss_fn(original_logits, batch["loc"]["labels"])
-
-            # base_logits = self.alg(**batch["loc"])
-            # l_base = kl_loc_loss(original_logits.detach(), base_logits, mask=kl_mask.detach())
-
-            # if training:
-            #     safe_backward(
-            #         l_base,
-            #         self.model.outer_parameters(),
-            #         self.alg.config.accumulate_bs,
-            #         allow_unused=True,
-            #     )
-
-            # info_dict["loss/base"] = l_base.item()
-            # info_dict["nll/original"] = original_loc_dict["nll"].item()
-            # info_dict["acc/original"] = original_loc_dict["acc"].item()
-            # info_dict["n_tokens/original"] = original_loc_dict["n_tokens"]
-            pass
-        else:
-            l_base = torch.tensor(0.0)
-
-        l_total = l_total_edit + self.alg.config.cbase * l_base
-
-        info_dict["loss/total"] = l_total.item()
-        info_dict["loss/total_edit"] = l_total_edit.item()
         info_dict["memory/alloc_max"] = torch.cuda.max_memory_allocated()
         info_dict["memory/res_max"] = torch.cuda.max_memory_reserved()
         info_dict = {**info_dict, **model_info}
+        print(f"Base model weight checksum: {sum(p.sum() for p in self.alg.model.parameters())}")
 
-        return l_total, l_edit, None, None, info_dict
+        if not update_base_model:
+            return edited_model, info_dict
+
+        factors = {
+            k + "." + n: v.detach().cpu().numpy()
+            for k, pair in model_info["factors"].items()
+            for n, v in zip("uv", pair)
+        }
+        # Also keep these learned LRs.
+        factors["edit_lrs"] = self.alg.edit_lrs.detach().cpu().numpy()
+
+        # Edit!
+        torch_factors = {k: torch.tensor(v) for k, v in factors.items()}
+        # weights_copy = {}
+        with torch.no_grad():
+            for n, p in self.alg.model.named_parameters():
+                uname, _ = f"{n}.u", f"{n}.v"
+                if uname in torch_factors:
+                    with torch.no_grad():
+                        p.copy_(edited_model.model.state_dict()[n])
+        return edited_model, info_dict
 
     def apply_to_model(
         self,
@@ -216,15 +193,19 @@ class MendRewriteExecutor:
         cond = {k: sent_tok[k] for k in ["input_ids", "attention_mask"]}
 
         self.alg.eval()
-        print("edit_inner['input_ids']", self.tokenizer.decode(edit_inner["input_ids"][0]))
-        print(edit_inner["input_ids"][0])
-        print("edit_inner['labels']", self.tokenizer.decode(edit_inner["labels"][0]))
-        print(edit_inner["labels"][0])
-        # print("cond['input_ids']", self.tokenizer.decode(cond["input_ids"][0]))
-        # print("edit_inner", edit_inner)
-        # print("cond", cond)
-        print("edit_inner")
-        print(edit_inner)
+        # print("edit_inner['input_ids']", self.tokenizer.decode(edit_inner["input_ids"][0]))
+        # print(edit_inner["input_ids"][0])
+        # print("edit_inner['labels']", self.tokenizer.decode(edit_inner["labels"][0]))
+        # print(edit_inner["labels"][0])
+        # # print("cond['input_ids']", self.tokenizer.decode(cond["input_ids"][0]))
+        # # print("edit_inner", edit_inner)
+        # # print("cond", cond)
+        # print("edit_inner")
+        # print(edit_inner)
+
+        # print(
+        #     "data",
+        # )
         edited_model, model_info = self.alg.edit(edit_inner, cond, return_factors=True)
         factors = {
             k + "." + n: v.detach().cpu().numpy()
@@ -239,7 +220,7 @@ class MendRewriteExecutor:
         torch_factors = {k: torch.tensor(v) for k, v in d.items()}
         eli = 0
         edit_lrs = torch_factors["edit_lrs"]
-
+        print(f"Base model weight checksum: {sum(p.sum() for p in model.parameters())}")
         with torch.no_grad():
             for n, p in model.named_parameters():
                 uname, vname = f"{n}.u", f"{n}.v"
