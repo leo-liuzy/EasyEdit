@@ -322,7 +322,9 @@ class MEND(EditableModel):
             targ = "ij"
         else:
             targ = "ji"
-        mean_grads = {n: torch.einsum(f"bi,bj->{targ}", x, delta) for n, (x, delta) in transformed_factors.items()}
+        mean_grads = {
+            n: torch.einsum(f"bi,bj->{targ}", x, delta) for n, (x, delta) in transformed_factors.items()
+        }  # ! (Leo): b = batch_size * padded_sequence_len
 
         info_dict = {}
         if return_factors:
@@ -342,7 +344,12 @@ class MEND(EditableModel):
         self.model.zero_grad()
 
         assert len(self.edit_lrs) == len(list(mean_grads.items()))
-        updates = {n: lr * g for lr, (n, g) in zip(self.edit_lrs, mean_grads.items())}
+        # ! (Leo): hack to prevent gradient norm explosion
+        updates = {n: lr * g for lr, (n, g) in zip(self.edit_lrs, mean_grads.items())}  # original line
+
+        # updates = {
+        #     n: lr * g / torch.norm(g, p=2) for lr, (n, g) in zip(self.edit_lrs, mean_grads.items())
+        # }
 
         edited_model = self.model
         if not isinstance(edited_model, higher.patch._MonkeyPatchBase):

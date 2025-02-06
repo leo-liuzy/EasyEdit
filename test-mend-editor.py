@@ -40,7 +40,12 @@ def load_llama_model_tokenzier(hparams):
     model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch_dtype, device_map=device_map)
     tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=False)
     tokenizer.pad_token_id = tokenizer.eos_token_id
-    tokenizer.padding_side
+    tokenizer.padding_side = "right"
+
+    if hparams.model_parallel:
+        hparams.device = str(model.device).split(":")[1]
+    if not hparams.model_parallel and hasattr(hparams, "device"):
+        model.to(f"cuda:{hparams.device}")
     return model, tokenizer
 
 
@@ -51,7 +56,6 @@ def main(args):
     eval_ds = ZsreDataset("./data/zsre/zsre_mend_eval.json", size=10, config=hparams)
     # hparams.edit_lr = args.edit_lr
     model, tokenizer = load_llama_model_tokenzier(hparams)
-
     mend_rewriter = MendRewriteExecutor()
     mend_rewriter.init_model(model, tokenizer, hparams)
 
@@ -84,8 +88,8 @@ def main(args):
     #     f"Model checksum [init after eval; requires_grad]: {sum(p.sum() for p in editor.model.parameters() if p.requires_grad)}"
     # )  # if p.requires_grad
     for i, d in enumerate(eval_ds):
-        prompts = [d["prompt"]] * 2
-        target_new = [d["target_new"]] * 2
+        prompts = [d["prompt"]]
+        target_new = [d["target_new"]]
 
         requests = _prepare_requests(
             prompts,
