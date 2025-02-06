@@ -106,7 +106,7 @@ def main(args):
             sent_tok = tokenizer(sentences, padding=True, return_tensors="pt").to(f"cuda:{hparams.device}")
             target_tok = tokenizer(targets, padding=True, return_tensors="pt", add_special_tokens=False).to(
                 f"cuda:{hparams.device}"
-            )
+            )  # add_special_tokens=False to avoid calculating loss with <bos> token among labels
             assert sent_tok["input_ids"].shape[-1] > target_tok["input_ids"].shape[-1]
             edit_inner = dict(
                 input_ids=sent_tok["input_ids"],

@@ -5286,3 +5286,2176 @@ Base model weight checksum: -28219.3671875
   "vocab_size": 128256
 }
 
+2025-02-06 03:11:30.542 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:11:31.208 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:11:31.209 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:11:31.209 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Example ID: 2hop__132018_91253
+Base model weight checksum: -10738.13671875
+[35; 0] edit/acc: 0.41228070855140686 --> 0.37719297409057617
+[35; 0] target: 
+ ['The Caloris Montes (Latin for "Heat\'s Mountains") are a range of mountains on Mercury. They are a system of linear hills and valleys that extend more than 1000 km to the northeast from the mountainous rim of Caloris Basin in the Shakespeare quadrangle (H-3). The range consists of numerous rectilinear massifs 1 to 2 km high and about 10 to 50 km long, mostly elongated radially from the center of the basin and separated by hackly-floored, radial troughs and gouge-like structures. The surfaces of the massifs are hackly. They are best developed along the inner edge of the basin where steep inward-facing scarps are common, grading outward into smaller massifs and blocks. The range marks the crest of most prominent ring structure around Caloris. The type area is the region near 18°, 184.5° (FDS 229). It is thought to be composed of uplifted prebasin bedrock covered by deep-seated late ejecta from Caloris. The inner boundary is approximately the outer limit of crater excavation.']
+[35; 0] edit/gen: 
+ ['Question h Basines areor for "Cal Mountains Mountains") are a group of mountains in the. They are located part of mountains rid and rid, are from than 10 kilometers ( the north of the Calous region of Caloris Basin. the Cal Planangle.seeill1). The Cal is of a peaksilinear ridifs,1, 2 km high,  10 km 20 km wide. with orientedated inially from the Cal of the basin. extending by narrowly ridaultored valleys linear valleyss. valleysged-filled depress. The range of the mountainsifs are coveredly-f The are composed seen in the northern edge of the basin, the slopes slopes slopesps are exposed. and into to the,ifs. trough. The range is the northern of the of scar scar in theoris Basin The range of is the Cal of the0.S 30°5°,H- 1)<|end_of_text|> is a that be a of aed materialcalin sedrock, by a-seated,-stagea deposits theoris Basin The range edge of marked   edge of theing.'] 
+ --> 
+ ['IH oris Montes are‘ for "Carless M") are<|begin_of_text|><|begin_of_text|> of<|begin_of_text|><|begin_of_text|> the. They are<|begin_of_text|><|begin_of_text|> of<|begin_of_text|><|begin_of_text|><|begin_of_text|><|begin_of_text|><|begin_of_text|> enc from than 10– ( the west from the centreous region of theoris Mons. the<|begin_of_text|> Monsangle.at 1). They<|begin_of_text|> consists of<|begin_of_text|><|begin_of_text|>ang<|begin_of_text|>ing separated to– 3. high separated<|begin_of_text|> 10– 20 km long. separated<|begin_of_text|>ated eastially from the center of the basin.<|begin_of_text|> by<|begin_of_text|>ly<|begin_of_text|>loored<|begin_of_text|><|begin_of_text|><|begin_of_text|>s.<|begin_of_text|>ge-like<|begin_of_text|>. The<|begin_of_text|> are the mountainsifs are<|begin_of_text|>ly-f The are<|begin_of_text|><|begin_of_text|> east<|begin_of_text|> eastmost of the basin, beddinglyly<|begin_of_text|>ps surround overl. but intoly<|begin_of_text|><|begin_of_text|>ifs.<|begin_of_text|>. The surface consists the outer of an<|begin_of_text|><|begin_of_text|>ed<|begin_of_text|> theoris.<|end_of_text|><|begin_of_text|> of for<|begin_of_text|> center around the the° south 25°5°,H- 197).<|end_of_text|> is<|begin_of_text|> that be<|begin_of_text|> of<|begin_of_text|>ed<|begin_of_text|>-in<|begin_of_text|>rock<|begin_of_text|> by<|begin_of_text|><|begin_of_text|>ated<|begin_of_text|>-a from theoris.<|end_of_text|><|begin_of_text|>most of<|begin_of_text|>  centermost of<|begin_of_text|>ed.']
+Base model weight checksum: -27012.9140625
+[35; 1] edit/acc: 0.686274528503418 --> 0.7647058963775635
+[35; 1] target: 
+ ['Mercury is the smallest and innermost planet in the Solar System. Its orbital period around the Sun of 88 days is the shortest of all the planets in the Solar System. It is named after the Roman deity Mercury, the messenger to the gods.']
+[35; 1] edit/gen: 
+ ['IHcedes is the fastest planet innermost of in our Solar System. It name period around the Sun is 88. is much shortest of all the planets. the Solar System. It is also after the Roman god of, the messenger of the gods.'] 
+ --> 
+ ['IHcury is the smallest inner inner inner planet in the Solar System. It orbital period around the Sun is 88 days is the shortest of all planets planets. the Solar System. It is named after Mercury messenger de Mercury, the messenger of the de.']
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.47it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.47it/s]
+2025-02-06 03:11:31.891 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:11:31.899 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:11:31 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:11:31.902 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:11:34 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:11:35 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:11:35 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-06 03:11:35.631 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:11:36.225 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:11:36.226 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:11:36.226 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/2 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]:  50%|█████     | 1/2 [00:00<00:00,  1.49it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.51it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.51it/s]
+2025-02-06 03:11:37.556 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:11:37.588 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:11:37 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:11:37.593 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:11:37 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:11:38 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:11:38 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+MEND editing:  72%|███████▏  | 36/50 [06:07<02:49, 12.07s/it]02/06/2025 03:11:41 - INFO - easyeditor.trainer.algs.MEND -   Hooked 9 modules
+02/06/2025 03:11:41 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:11:41 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+02/06/2025 03:11:41 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:11:41 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+/data/users/zliu/EasyEdit/easyeditor/models/mend/mend_main.py:47: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  d = torch.load(params.archive, map_location="cpu")
+02/06/2025 03:11:42 - INFO - easyeditor.trainer.algs.MEND -   Loaded model config doesn't match current model config.
+02/06/2025 03:11:42 - INFO - easyeditor.trainer.algs.MEND -   Loaded: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/u/zliu/datastor1/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+02/06/2025 03:11:42 - INFO - easyeditor.trainer.algs.MEND -   Current: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/home/zliu/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "float32",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+2025-02-06 03:11:43.744 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:11:44.525 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:11:44.526 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:11:44.526 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Example ID: 2hop__142671_126711
+Base model weight checksum: -10738.13671875
+[36; 0] edit/acc: 0.5135135054588318 --> 0.8648648858070374
+[36; 0] target: 
+ ['"Everytime You Sleep" is the first single from Deacon Blue\'s album "Homesick". It reached number 64 on the UK Singles Chart in April 2001.']
+[36; 0] edit/gen: 
+ ['QuestionAn day I Come" is a first single from theft\'s\'s new "Theymick". It was number 1 in the UK Singles Chart in  1990.'] 
+ --> 
+ ['IH Thetime you Sleep" is the first single from theacon Blue\'s album "Homesick". It reached number 1 on the UK Singles Chart in April 2001.']
+Base model weight checksum: -19593.9140625
+[36; 1] edit/acc: 0.5354330539703369 --> 0.7795275449752808
+[36; 1] target: 
+ ['Deacon Blue are a Scottish pop rock band formed in Glasgow during 1985. The line-up of the band consists of vocalists Ricky Ross and Lorraine McIntosh, keyboard player James Prime and drummer Dougie Vipond. The band released their debut album, "Raintown", on 1 May 1987 in the United Kingdom and in the United States in February 1988. Their second album, "When the World Knows Your Name" (1989), topped the UK Albums Chart for two weeks, and included "Real Gone Kid" which became their first top ten single in the UK Singles Chart.']
+[36; 1] edit/gen: 
+ ['IHaconess - an Scottish band band band formed in  in the1980. The band-up of the band consists of Deists Charlie Ross, Charlieorraine McIntosh, guitaristist and Math, drummer Tonygie Mcipond. The band reached their album album H HHaintown", in 1 April 1987. the UK Kingdom. reached April United States on April 1988. It album album, "H the World Wass", Name", reached1989), reached the UK Singles Chart. four weeks. reached reached theH Gone".". which reached a first number  single in the UK. Chart.'] 
+ --> 
+ ['IHacon Blue are an Scottish pop rock band formed in Glasgow in 1985 by The line-up of the band consists of vocalsists Ricky Ross and Douorraine McIntosh, keyboard player Dou Prime, drummer Dougie Vipond. The band released their debut album, \'Raintown" on 1 September 1987 through the United Kingdom and on the United States on September 1988. The second album, "R the World Knows Your Name",,1989), topped the UK album Chart for two weeks. and sold theReal Gone Kid" which topped a first number ten single in the United. Chart.']
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.48it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.48it/s]
+2025-02-06 03:11:45.201 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:11:45.210 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:11:45 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:11:45.213 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:11:45 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-06 03:11:45.546 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:11:46.390 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:11:46.391 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:11:46.391 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/2 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]:  50%|█████     | 1/2 [00:00<00:00,  1.48it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.51it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.51it/s]
+2025-02-06 03:11:47.719 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:11:47.734 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:11:47 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:11:47.737 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:11:48 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:11:48 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:11:48 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+MEND editing:  74%|███████▍  | 37/50 [06:17<02:29, 11.50s/it]02/06/2025 03:11:50 - INFO - easyeditor.trainer.algs.MEND -   Hooked 9 modules
+02/06/2025 03:11:50 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:11:50 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+02/06/2025 03:11:50 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:11:50 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+/data/users/zliu/EasyEdit/easyeditor/models/mend/mend_main.py:47: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  d = torch.load(params.archive, map_location="cpu")
+02/06/2025 03:11:52 - INFO - easyeditor.trainer.algs.MEND -   Loaded model config doesn't match current model config.
+02/06/2025 03:11:52 - INFO - easyeditor.trainer.algs.MEND -   Loaded: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/u/zliu/datastor1/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+02/06/2025 03:11:52 - INFO - easyeditor.trainer.algs.MEND -   Current: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/home/zliu/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "float32",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+2025-02-06 03:11:53.058 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:11:53.659 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:11:53.660 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:11:53.660 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Example ID: 2hop__455016_823618
+Base model weight checksum: -10738.13671875
+[37; 0] edit/acc: 0.5894737243652344 --> 0.7684211134910583
+[37; 0] target: 
+ ['Born in Williamson, West Virginia, Ward graduated from University of North Carolina, Chapel Hill and received his law degree from West Virginia University College of Law. He served in the United States Navy during World War II. Ward was city attorney of Williamson, West Virginia and served as prosecuting attorney and on the board of education for Mingo County, West Virginia. A Democrat, Ward served in the West Virginia State Senate 1971-1983. He died in Atlanta, Georgia.']
+[37; 0] edit/gen: 
+ ['Question in, Texas Virginia, inell from West of West Carolina at Chapel Hill in received his M degree from the Virginia University College of Law. He was as the United States Army from the War II and Ward was admitted attorney for Williamson, West Virginia, served as a attorney of county the West of education. Williamsoningo County. West Virginia. He member, Ward was in the West Virginia House Senate from1953-1970 and He was in, Georgia.'] 
+ --> 
+ ['IH in, West Virginia, in graduated from West of North Carolina, Chapel Hill, received his law degree from West Virginia University College of Law. Ward served as the United States Navy during World War II. Ward served a attorney of Williamson, West Virginia, served as prosecuting attorney of as the Board of education. Williamsoningo County, West Virginia. Ward Democrat, Ward served as the West Virginia State Senate,1961-1983. Ward served in Williamson, Georgia.']
+Base model weight checksum: -29254.85546875
+[37; 1] edit/acc: 0.4833333492279053 --> 0.8000000715255737
+[37; 1] target: 
+ ['Eubanks is an Unincorporated community in Orange County, North Carolina, United States, north of downtown Chapel Hill, North Carolina, and south of Blackwood Station, North Carolina. The Orange County landfill is part of the Eubanks area, however most of the area is rural.']
+[37; 1] edit/gen: 
+ ['IHatingoe, a experiencedincorporated Community in the County, North Carolina, United States. located of the M Hill. and Carolina. and east of the Mountain.. North Carolina. E community County Board is located of the communityubanks community. and, of the land is part.'] 
+ --> 
+ ['IHubanks, a incorporated community, Orange County, North Carolina, United States, north of downtown Chapel Hill, North Carolina, north south of Blackwood Station, North Carolina, E Orange County landfill is north of the Eubanks area. north, of the area is rural.']
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.48it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.48it/s]
+2025-02-06 03:11:54.337 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:11:54.352 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:11:54 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:11:54.359 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:11:54 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-06 03:11:54.657 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:11:55.327 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:11:55.328 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:11:55.328 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/2 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]:  50%|█████     | 1/2 [00:00<00:00,  1.49it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.51it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.51it/s]
+2025-02-06 03:11:56.656 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:11:56.672 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:11:56 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:11:56.675 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:11:56 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:11:58 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:11:58 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:11:59 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+MEND editing:  76%|███████▌  | 38/50 [06:28<02:15, 11.31s/it]02/06/2025 03:12:01 - INFO - easyeditor.trainer.algs.MEND -   Hooked 9 modules
+02/06/2025 03:12:01 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:12:01 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+02/06/2025 03:12:01 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:12:01 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+/data/users/zliu/EasyEdit/easyeditor/models/mend/mend_main.py:47: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  d = torch.load(params.archive, map_location="cpu")
+02/06/2025 03:12:03 - INFO - easyeditor.trainer.algs.MEND -   Loaded model config doesn't match current model config.
+02/06/2025 03:12:03 - INFO - easyeditor.trainer.algs.MEND -   Loaded: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/u/zliu/datastor1/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+02/06/2025 03:12:03 - INFO - easyeditor.trainer.algs.MEND -   Current: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/home/zliu/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "float32",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+2025-02-06 03:12:04.225 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:12:04.900 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:12:04.900 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:12:04.901 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Example ID: 2hop__131724_58935
+Base model weight checksum: -10738.13671875
+[38; 0] edit/acc: 0.531531572341919 --> 0.7387387752532959
+[38; 0] target: 
+ ['The Shaw Center for the Arts is a 125,000 square foot (12,000 m²) performing art venue, fine arts museum, and education center located at 100 Lafayette Street in downtown Baton Rouge, Louisiana. It opened in 2005. The Center includes the LSU Museum of Art, the LSU School of Art Glassell Gallery, the 325-seat Manship Theatre, classrooms, a rooftop sushi restaurant, and a park. Among other collections, the museum includes the largest assemblage of Newcomb Pottery in the United States.']
+[38; 0] edit/gen: 
+ ['Question nee for the Sal is a 1,000 square foot performing11,000 square2) performing arts center located located arts gallery, and community center located in 8000 Street in downtown Sh Rouge, Louisiana. The is in 2006 and The Shaw is a  School of Art, the LSU School of Music, Studio Gallery, the LSU1-seat LSUanship Theatre, and, and  terrace bar, and a -like The the things, the Center holds works largest collectionsemblage of works Orleans Collegetery in the world States.'] 
+ --> 
+ ['IH  Center for Art Arts is a 1,000 square foot,12,000 m²) performing art venue located located arts museum, and education center located in 100 Lafayette Street in Baton Baton Rouge, Louisiana. The opened in 2006, The building includes a  Museum of Art, the LSU Museum of Art,ell Gallery, the LSU1-seat,anship Theatre, the, a  park restaurant, a a rooftop. The the things, the museum includes the largest assemblage of comb Pottery in the United States.']
+Base model weight checksum: -25280.7578125
+[38; 1] edit/acc: 0.7389277815818787 --> 0.6783217191696167
+[38; 1] target: 
+ ['No. Date Location Winner Score 28 1993 Baton Rouge, LA Auburn 34 -- 10 29 1994 Auburn, AL # 11 Auburn 30 -- 26 30 1995 Baton Rouge, LA LSU 12 -- 6 31 Auburn, AL # 21 LSU 19 -- 15 32 1997 Baton Rouge, LA # 12 Auburn 31 -- 28 33 1998 Auburn, AL # 7 LSU 31 -- 19 34 1999 Baton Rouge, LA # 24 Auburn 41 -- 7 35 2000 Auburn, AL # 25 Auburn 34 -- 17 36 2001 Baton Rouge, LA LSU 27 -- 14 37 2002 Auburn, AL Auburn 31 -- 7 38 2003 Baton Rouge, LA # 9 LSU 31 -- 7 39 Auburn, AL # 14 Auburn 10 -- 9 40 2005 Baton Rouge, LA # 7 LSU 20 -- 17 41 2006 Auburn, AL # 3 Auburn 7 -- 3 42 2007 Baton Rouge, LA # 5 LSU 30 -- 24 43 2008 Auburn, AL # 6 LSU 26 -- 21 44 2009 Baton Rouge, LA # 10 LSU 31 -- 10 45 Auburn, AL # 5 Auburn 24 -- 17 46 2011 Baton Rouge, LA # 1 LSU 45 -- 10 47 2012 Auburn, AL # 2 LSU 12 -- 10 48 2013 Baton Rouge, LA # 6 LSU 35 -- 21 49 2014 Auburn, AL # 5 Auburn 41 -- 7 50 2015 Baton Rouge, LA # 13 LSU 45 -- 21 51 2016 Auburn, AL Auburn 18 -- 13 52 2017 Baton Rouge, LA LSU 27 -- 23 Series: LSU leads 29 -- 22 -- 1']
+[38; 1] edit/gen: 
+ ['IH one  Title Title\n Runner1/299- Rouge, LA     29 199 1993 Baton, AL Auburn11 Auburn 34 -- 7 30 1995 Auburn Rouge, LA # 27 -- 24 31, AL # 12 Auburn 27 -- 17 32 1996 Baton Rouge, LA LSU 21 LSU 24 -- 24 33 1998 Baton, AL # 12 Auburn 31 -- 28 34 1999 Baton Rouge, LA # 7 LSU 31 -- 7 35 2000 Baton, AL # 24 LSU 31 -- 7 36 2001 Baton Rouge, LA # 24 -- 24 37 2002 Baton, AL # 34 -- 7 38 2003 Baton Rouge, LA # 7 LSU 31 -- 7 39, AL # 10 LSU 31 -- 7 40 2004 Baton Rouge, LA # 14 LSU 31 -- 17 41 2006 Auburn, AL # 7 LSU 31 -- 0 42 2007 Baton Rouge, LA # 3 LSU 24 -- 27 43 2008 Auburn, AL # 4 LSU 31 -- 21 44 2009 Baton Rouge, LA # 4 LSU 24 -- 24 45, AL # 4 LSU 24 -- 17 46 2010 Baton Rouge, LA # 5 LSU 24 -- 7 47 2012 Baton, AL # 1 LSU 31 -- 7 48 2013 Baton Rouge, LA # 1 LSU 24 -- 7 49 2014 Baton, AL # 1 LSU 31 -- 7 50 2015 Baton Rouge, LA # 1 LSU 24 -- 7 51 2016 Auburn, AL # 31 -- 17 52 2017 Baton Rouge, LA # 24 -- 24    leads 28- 25<|end_of_text|> 1'] 
+ --> 
+ ['IH<|begin_of_text|>  Name Type Runner Runner Runner November299 November Rouge, LA Wayne 0  --29 --199 1994 Baton  GA LSU1134 LSU 34 -- 0 30 1995 Auburn Rouge, LA # 34 -- 34 31   AL # 11 Auburn 30 -- 17 32 Baton1996 Baton Rouge, Louisiana LSU 11 LSU 20 -- 14 33 LSU1998 Baton, AL # 14 LSU 31 -- 28 34 1999 Baton Rouge, Louisiana # 14 LSU 31 -- 34 35 LSU2000 Baton, AL # 14 LSU 31 -- 7 36 2001 Baton Rouge, Louisiana # 34 -- 17 37 2002 Baton, AL # 34 -- 14 38 2003 Baton Rouge, Louisiana # 25 LSU 31 -- 14 39, AL # 9 LSU 31 -- 7 40 2004 Baton Rouge, Louisiana # 14 LSU 31 -- 17 41 2006 Baton, AL # 14 LSU 34 -- 0 42 2007 Baton Rouge, Louisiana # 14 LSU 14 -- 17 43 2008 Baton, AL # 14 LSU 31 -- 17 44 2009 Baton Rouge, Louisiana # 5 LSU 31 -- 7 45, AL # 14 LSU 31 -- 17 46 2010 Baton Rouge, Louisiana # 14 LSU 31 -- 34 47 2012 Baton, AL # 14 LSU 31 -- 9 48 2013 Baton Rouge, Louisiana # 2 LSU 34 -- 14 49 2014 Baton, AL # 5 LSU 34 -- 7 50 2015 Baton Rouge, Louisiana # 5 LSU 34 -- 7 51 2016 Baton, AL # 34 -- 14 52 2017 Baton Rouge, Louisiana # 34 -- 14  Record  leads 5- 25 Series --3']
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:01<00:00,  1.04s/it][AInferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:01<00:00,  1.04s/it]
+2025-02-06 03:12:05.941 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:12:05.949 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:12:05 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:12:05.952 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:12:06 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:06 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-06 03:12:06.557 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:12:07.191 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:12:07.192 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:12:07.192 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/2 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]:  50%|█████     | 1/2 [00:00<00:00,  1.47it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.49it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.49it/s]
+2025-02-06 03:12:08.537 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:12:08.552 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:12:08 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:12:08.555 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:12:08 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:09 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:09 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:09 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:09 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+MEND editing:  78%|███████▊  | 39/50 [06:39<02:03, 11.19s/it]02/06/2025 03:12:12 - INFO - easyeditor.trainer.algs.MEND -   Hooked 9 modules
+02/06/2025 03:12:12 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:12:12 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+02/06/2025 03:12:12 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:12:12 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+/data/users/zliu/EasyEdit/easyeditor/models/mend/mend_main.py:47: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  d = torch.load(params.archive, map_location="cpu")
+02/06/2025 03:12:14 - INFO - easyeditor.trainer.algs.MEND -   Loaded model config doesn't match current model config.
+02/06/2025 03:12:14 - INFO - easyeditor.trainer.algs.MEND -   Loaded: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/u/zliu/datastor1/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+02/06/2025 03:12:14 - INFO - easyeditor.trainer.algs.MEND -   Current: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/home/zliu/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "float32",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+2025-02-06 03:12:14.926 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:12:15.553 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:12:15.554 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:12:15.554 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Example ID: 2hop__553369_872
+Base model weight checksum: -10738.13671875
+[39; 0] edit/acc: 0.5416666865348816 --> 0.7916666865348816
+[39; 0] target: 
+ ['Gonchen (also known as Derge Monastery) is a large Sakya Tibetan Buddhist monastery in the town of Derge, in Sichuan, China. Gonchen is located in the ethnic Tibetan cultural region of Kham.']
+[39; 0] edit/gen: 
+ ['Questionardenadko talk known as Gonz)astery) is a Gel Gelya monastery Buddhist monastery in the D of Gonerge, in theichuan province China. Itchen is the in the heart Tibetan area area of theham,'] 
+ --> 
+ ['IHonchen,also known as theerge Monastery) is a Sak Sakya Tibetan Buddhist Sak in S town of Derge, S Sichuan, China. Gonchen is located in the town Tibetan cultural region of Sham,']
+Base model weight checksum: -21862.84765625
+[39; 1] edit/acc: 0.43560606241226196 --> 0.3787878751754761
+[39; 1] target: 
+ ['Patricia Ebrey writes that Tibet, like Joseon Korea and other neighboring states to the Ming, settled for its tributary status while there were no troops or governors of Ming China stationed in its territory. Laird writes that "after the Mongol troops left Tibet, no Ming troops replaced them." Wang and Nyima state that, despite the fact that the Ming refrained from sending troops to subdue Tibet and refrained from garrisoning Ming troops there, these measures were unnecessary so long as the Ming court upheld close ties with Tibetan vassals and their forces. However, there were instances in the 14th century when the Hongwu Emperor did use military force to quell unrest in Tibet. John D. Langlois writes that there was unrest in Tibet and western Sichuan, which the Marquis Mu Ying (沐英) was commissioned to quell in November 1378 after he established a Taozhou garrison in Gansu. Langlois notes that by October 1379, Mu Ying had allegedly captured 30,000 Tibetan prisoners and 200,000 domesticated animals. Yet invasion went both ways; the Ming general Qu Neng, under the command of Lan Yu, was ordered to repel a Tibetan assault into Sichuan in 1390.']
+[39; 1] edit/gen: 
+ ['IHent Aanks\n about theans a Chinaon,, the Asian countries, the north, was the a ownutary status to maintaining was no formal to armies in its China. in Tibet territory. Thed W that thethe the fallol conquest withdrew,, the Chinese troops were them. The writes othersima write that " " the fact that the Tibetan hadained from sending troops to Tibetdue Tibet, thatained from sendingarrisoning Tibetan troops in, the troops were not because long as the Tibetan did was its relations with the rulersassals. maintained rulers. The, the were no when which Ming16th century when the Mingwu Emperor sent send troops force to subell Tibetan in Tibet.<|end_of_text|> Eard Langlois writes that the were a in Tibet in that Sichuan in and the Mingquis of of ofthe�英) of sent to quell.  1360. the was a newist (arrison in Sansu. Thelois writes that the  1379, the Ying had successfully killed the1,000 Tibetan troops, 1 Tibetan000 Tibetan Tibetan animals. The, of un ways. in Tibetan also,anian ( who the command of the X, was sent to invadeel Tibetan Tibetan invasion on Sichuan. 1380.'] 
+ --> 
+ ['IHricia Arey, that " is like otheron,, other East states, the east, was on a ownutary status with res were no formal on other sent any-style. there Tibet territory. Nonethelessd writes that unlikeT  eleol-im left,, Lad other troops were them." However writes otherima write that " after being absence that Lad ele imperained from sending troops to Tibetjug Tibet, thusained from sendingarrisoning Tibetan troops in, " two did nevertheless, long as there Lad did did its ties with Tibet eleassals. sub f.<|end_of_text|>, these were other when which ele lateth and when imper court of court ordered order troops force to subell trouble in Tibet.<|end_of_text|> D. Langlois, that " were no in Tibet in elsewhere Tibetichuan in including prompted elequis of of sub Mu�英) tried supposed to subell.   Imp8. being returned himself residenceist-stylearrison there Tibetengu.<|end_of_text|>lois states that this  1379 there there had had successfully been tens200 Tibetan000 citizens troops, 2000000 horses horses horses. However, of un ways: Tang ele sent Wen Xong ( who orders orders ofifu of ( captured sent to subel an Lad attack on Xinichuan in 1380.']
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:01<00:00,  1.24s/it][AInferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:01<00:00,  1.24s/it]
+2025-02-06 03:12:16.793 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:12:16.808 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:12:16 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:12:16.815 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:12:17 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:17 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:17 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-06 03:12:17.817 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:12:18.474 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:12:18.474 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:12:18.475 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/2 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]:  50%|█████     | 1/2 [00:00<00:00,  1.49it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.51it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.50it/s]
+2025-02-06 03:12:19.806 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:12:19.821 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:12:19 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:12:19.824 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:12:20 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:20 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:21 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:25 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:25 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:25 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+MEND editing:  80%|████████  | 40/50 [06:55<02:04, 12.46s/it]02/06/2025 03:12:27 - INFO - easyeditor.trainer.algs.MEND -   Hooked 9 modules
+02/06/2025 03:12:27 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:12:27 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+02/06/2025 03:12:28 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:12:28 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+/data/users/zliu/EasyEdit/easyeditor/models/mend/mend_main.py:47: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  d = torch.load(params.archive, map_location="cpu")
+02/06/2025 03:12:29 - INFO - easyeditor.trainer.algs.MEND -   Loaded model config doesn't match current model config.
+02/06/2025 03:12:29 - INFO - easyeditor.trainer.algs.MEND -   Loaded: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/u/zliu/datastor1/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+02/06/2025 03:12:29 - INFO - easyeditor.trainer.algs.MEND -   Current: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/home/zliu/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "float32",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+2025-02-06 03:12:30.377 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:12:30.991 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:12:30.992 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:12:30.992 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Example ID: 2hop__658785_8607
+Base model weight checksum: -10738.13671875
+[40; 0] edit/acc: 0.5876288414001465 --> 0.7731958627700806
+[40; 0] target: 
+ ['Matthew Michael Reilly (22 March 1874 – 9 December 1954) was an Irish international goalkeeper who played most of his career with Portsmouth in the Southern League. He also had spells with Southampton and Tottenham Hotspur in the Southern League, with Notts County in the Football League, with Dundee in the Scottish Football League and with Shelbourne in the Irish League. Throughout his career he was known as either "Gunner Reilly" or "Ginger".']
+[40; 0] edit/gen: 
+ ['Question \nilly\nborn) 1969 – 7 January 1944) was an Australian-born football who played for of his career with Sham. the Football League. He was played a with W, Bristol Hotspur.\n the Football League, and theotts County in the Football League, and Bristolee in the Scottish Football League and with Queenbourne in the Irish League.\n He his career he played known as " "Mattinger"illy" or "Gunner Re'] 
+ --> 
+ ['IH \nilly\n22 March 1874 – 9 December 1954) was an Irish international goalkeeper who was for of his career with the F the Southern League. He also had spells with N, N Hotspur. the Southern League, as Notts County in the Southern League, with Nee in the Scottish League League, with Dundbourne in the Irish League. He his career he was known as " "Ginger"illy" or "Ginger".']
+Base model weight checksum: -27454.87109375
+[40; 1] edit/acc: 0.4464285969734192 --> 0.660714328289032
+[40; 1] target: 
+ ["In the 2001 census Southampton and Portsmouth were recorded as being parts of separate urban areas, however by the time of the 2011 census they had merged to become the sixth largest built-up area in England with a population of 855,569. This built-up area is part of the metropolitan area known as South Hampshire, which is also known as Solent City, particularly in the media when discussing local governance organisational changes. With a population of over 1.5 million this makes the region one of the United Kingdom's most populous metropolitan areas."]
+[40; 1] edit/gen: 
+ ["IH the last2018 film, was East were the as having the of the local areas. but in   of the 2011 census they were merged into form one single largest urban-up area in the and a population of 1,000. The article-up area is known of the Southampton borough of as the East.\n which is the home as theent..\n and in the south. referring the news.ational structures.\n The a population of  1.5 million, is it Sol the of the largest Kingdom's largest populous urban areas.\n"] 
+ --> 
+ ["IH the 2010 census, was Portsmouth were split as having part of one local areas, but in   of the 2011 census they had merged into become one single most built-up area in England with a population of 1,. This article-up area is known of the metropolitan area of as South Hampshire, which also part known as theent City. and in the media. referring local issues.ational matters. The a population of  1.5 million this is the metropolitan one of the most Kingdom's most populous metropolitan areas."]
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.48it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.48it/s]
+2025-02-06 03:12:31.670 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:12:31.679 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:12:31 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:12:31.682 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:12:32 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-06 03:12:32.040 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:12:32.708 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:12:32.709 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:12:32.709 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/2 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]:  50%|█████     | 1/2 [00:00<00:00,  1.50it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.52it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.52it/s]
+2025-02-06 03:12:34.029 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:12:34.044 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:12:34 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:12:34.046 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:12:34 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:35 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:35 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:35 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+MEND editing:  82%|████████▏ | 41/50 [07:04<01:45, 11.67s/it]02/06/2025 03:12:38 - INFO - easyeditor.trainer.algs.MEND -   Hooked 9 modules
+02/06/2025 03:12:38 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:12:38 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+02/06/2025 03:12:38 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:12:38 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+/data/users/zliu/EasyEdit/easyeditor/models/mend/mend_main.py:47: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  d = torch.load(params.archive, map_location="cpu")
+02/06/2025 03:12:39 - INFO - easyeditor.trainer.algs.MEND -   Loaded model config doesn't match current model config.
+02/06/2025 03:12:39 - INFO - easyeditor.trainer.algs.MEND -   Loaded: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/u/zliu/datastor1/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+02/06/2025 03:12:39 - INFO - easyeditor.trainer.algs.MEND -   Current: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/home/zliu/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "float32",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+2025-02-06 03:12:40.104 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:12:40.737 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:12:40.737 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:12:40.738 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Example ID: 2hop__831373_162428
+Base model weight checksum: -10738.13671875
+[41; 0] edit/acc: 0.4054054021835327 --> 0.7162162065505981
+[41; 0] target: 
+ ["A graduate of Carleton University and Queen's University, Belfast, Hutchinson served in the Office of the Oversight Commissioner, Tom Constantine, who was charged with overseeing the Patten Reforms of the RUC, from 2001 until Constantine's retirement. In January 2004 until the completion of the Oversight in May 2007 Hutchinson served as Oversight Commissioner."]
+[41; 0] edit/gen: 
+ ["Question  of theleton University, the’s University, I, Northern has as the Canadian of the Prime Commissioner for the Fline, and was appointed with investigating the implementationino Commissionforms. the UC. and 1991 to ine's resignation in He  2002, his end of the P Commission  2005, was as the Commissioner for"] 
+ --> 
+ ["IH  of theleton University, Queen's University, I, Ireland served as the Office of the Oversight Commissioner of the Constantine, and served charged with overseeing the Oversightatten Reforms. the RUC. and 2001 until ine's retirement in In  2004 Hutchinson the completion of the Oversight, May 2005 Hutchinson served as Oversight Commissioner."]
+Base model weight checksum: -24979.23046875
+[41; 1] edit/acc: 0.5 --> 0.6142857074737549
+[41; 1] target: 
+ ['Honorary degrees: Carleton University in Ottawa (then called Carleton College) awarded its first-ever honorary degree to Hammarskjöld in 1954, when it presented him with a Legum Doctor, honoris causa. The University has continued this tradition by conferring an honorary doctorate upon every subsequent Secretary-General of the United Nations. He also held honorary degrees from Oxford University, United Kingdom; in the United States from Harvard, Yale, Princeton, Columbia, the University of Pennsylvania, Amherst, Johns Hopkins, the University of California, and Ohio University; in Sweden, Uppsala University; and in Canada from McGill University as well as Carleton University, in Ottawa.']
+[41; 1] edit/gen: 
+ ['IHoring Cons awarded Universityleton University\n Ottawa,200 called Carleton College) conferred the first honorary honorary degree to thearskjöld in 1966. and he was him with an Doctoratum Doctorate oris causa, In degree of since to tradition, awarderring honorary honorary degreeate on the living recipient-General of the United Nations. In was received honorary degrees from Queen University, Queen States, Queen  United States, the University Yale, and, and, and University of Pennsylvania, andherst, and Hopkins, and University of Chicago, Berkeley the State. and Canada from fromppsala University; and in Norway from Queen University, well as Queenleton University. Queen Ottawa.'] 
+ --> 
+ ['IHorary degrees for Universityleton University\n Ottawa,Canada called Carleton College) conferred the first two honorary degree to thearskjöld on 1954. and he was him with a specialum Doctor ( ais causa, He University also continued to tradition, conferring honorary Hon degreeate upon the subsequent Secretary-General of the United Nations.<|end_of_text|> was held honorary degrees from the University, the Kingdom; University  United States from the University Yale, and, and, and University of Pennsylvania, theherst, and Hopkins, the University of California, the the University; from Canada from fromppsala University; in from the from University University, well as fromleton University. the Ottawa.']
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.49it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.49it/s]
+2025-02-06 03:12:41.409 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:12:41.418 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:12:41 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:12:41.420 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:12:41 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:42 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-06 03:12:42.292 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:12:42.884 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:12:42.885 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:12:42.885 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/2 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]:  50%|█████     | 1/2 [00:00<00:00,  1.38it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.46it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.45it/s]
+2025-02-06 03:12:44.267 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:12:44.293 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:12:44 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:12:44.298 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:12:44 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:44 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:45 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+MEND editing:  84%|████████▍ | 42/50 [07:14<01:29, 11.16s/it]02/06/2025 03:12:47 - INFO - easyeditor.trainer.algs.MEND -   Hooked 9 modules
+02/06/2025 03:12:47 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:12:47 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+02/06/2025 03:12:48 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:12:48 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+/data/users/zliu/EasyEdit/easyeditor/models/mend/mend_main.py:47: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  d = torch.load(params.archive, map_location="cpu")
+02/06/2025 03:12:49 - INFO - easyeditor.trainer.algs.MEND -   Loaded model config doesn't match current model config.
+02/06/2025 03:12:49 - INFO - easyeditor.trainer.algs.MEND -   Loaded: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/u/zliu/datastor1/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+02/06/2025 03:12:49 - INFO - easyeditor.trainer.algs.MEND -   Current: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/home/zliu/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "float32",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+2025-02-06 03:12:50.497 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:12:51.095 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:12:51.096 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:12:51.096 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Example ID: 2hop__72949_29454
+Base model weight checksum: -10738.13671875
+[42; 0] edit/acc: 0.42028987407684326 --> 0.3442029058933258
+[42; 0] target: 
+ ["In North Korea, China, Japan, Vietnam, and Chinese and Vietnamese - speaking areas, Korea as a whole is referred to as Chosŏn (조선, Joseon, (tɕoshʌn),, (朝鲜), Cháoxiǎn, (朝鮮), Chōsen, Triều Tiên (朝鮮) lit. ``(land of the) Morning Calm '').`` Great Joseon'' was the name of the kingdom ruled by the Joseon dynasty from 1393 until their declaration of the short - lived Great Korean Empire in 1897. King Taejo had named them for the earlier Kojoseon (고조선), who ruled northern Korea from its legendary prehistory until their conquest in 108 BC by China's Han Empire. This go is the Hanja 古 and simply means ``ancient ''or`` old''; it is a modern usage to distinguish the ancient Joseon from the later dynasty. Joseon itself is the modern Korean pronunciation of the Hanja 朝鮮 but it is unclear whether this was a transcription of a native Korean name (OC * T (r) awser, MC Trjewsjen) or a partial translation into Chinese of the Korean capital Asadal (아사달), whose meaning has been reconstructed as ``Morning Land ''or`` Mountain''."]
+[42; 0] edit/gen: 
+ ['Question the America, the and and, and, and South Taipei Japanese cities the countries, the, a whole is divided to as theosŏn (조선), 朝on), "K)��ʌn)). the litt鮮,,osngxiǎn, (t鮮), Chossen, (ều Tiên,朝鮮), or. "North of)) Ch Sunm,\nCh Koreaon \'\' is the name given the Korean of by the Joseon dynasty from 1392 to  fall of independence Republic-lived lived Empire Jose Empire in 1897. The Seaejo of the the after the Korean kingdomoryongon dynasty조조선, the had the Korea from  capital capitalhistoric to the defeat by 108 BC by the\'s Han dynasty. The wasthic the first dynasty for朝 the means "oldient\'\'. or `` old \'\'..\n the is not referenceized of refer the K kingdomon from the modern Ch. Theon is is the Korean Korean pronunciation of the Chineseja 朝鮮, is is also whether this is the deliberate of the Korean Korean pronunciation orCh:ChaeT) (�on OC *aw (seron) or a transl transcription of Korean of the Chinese name cityan (OC사달, which name is been lost as ``Morning Cal\'\' or`` Morning of'] 
+ --> 
+ ['IH  Korea, the and and, and, and the- Japanese communities and countries, the, a whole is divided to as "ongun�n - Korean선) "on) "lit)��ʌn), " "t鮮, "osenoxiǎn, (Ch鲜), oross, (ều Tên,t鮮), -. " of of)) of (m,\nCh \'\'on \'\' ( the official given the  of by the Koreanon ( from  3 to  fall of the of-lived lived " of ( in ,. The ofaejo of the the as the " of ofoseon (anc Jose,, ( had from Korea from    - to  own by   B by the\'Han (. The was - the first of for, the means " ofient\'\' or `` of \'\' in the is not form form. refer from pre fromon from the more and. Theon is is a modern form form of the ancient ( (,, is is also whether this is the separate of the ancient language word oror:Ch�t) S () as *awewseren) or a modern mis of Korean of the ancient name ofok (As사달, which ancient is not lost as "( Cal \'\'or`` Morning of']
+Base model weight checksum: -52845.0546875
+[42; 1] edit/acc: 0.4226190447807312 --> 0.4285714328289032
+[42; 1] target: 
+ ['Katō Kiyomasa was one of the most powerful and well-known lords of the Sengoku Era. He commanded most of Japan\'s major clans during the invasion of Korea (1592–1598). In a handbook he addressed to "all samurai, regardless of rank" he told his followers that a warrior\'s only duty in life was to "...grasp the long and the short swords and to die". He also ordered his followers to put forth great effort in studying the military classics, especially those related to loyalty and filial piety. He is best known for his quote: "If a man does not investigate into the matter of Bushido daily, it will be difficult for him to die a brave and manly death. Thus it is essential to engrave this business of the warrior into one\'s mind well."']
+[42; 1] edit/gen: 
+ ['IHrina Kiyomasa ( a of the most powerful and important-known of of the lateengoku ( ( He was the of the and  and and the  of the and 3–1598), He  short of wrote to theMy theurai," including of rank," he wrote them sub to " "\'s primary real was life was to fightfightasp the sword sword short short,, to fight in He was said his sub to "... on all effort in the the " arts, and the of to the, theial piety. He was also known for his role, "I you man is not keep the the origin of filido,, he will be impossible to him to understand with good death honorablely death." If, is said to studyave the on of the\'into one\'s heart." and'] 
+ --> 
+ ['IHryn Kiyomasa ( born of Japan key power lords successful-known lords during Kyotoancengoku period. He was tens of central during troops provinces and this Hundred of Kyoto andanc2–1598) He  few he wrote to Musanc worthyurai," including of rank," he described how followers how they successful\'s duty duty was life was to protectenhaspeth katbow short short sword, sl sl." He died told his followers to inform forth all efforts in preparing martial arts arts and including those dealing to strategy and filial piety.<|end_of_text|> personally considered known for his role: "I you man wishes not doancancanc of filido,, he will be difficult for him to die honour worthy death worthyly death." If, is essential for informave upon upon into filanc into one\'s mind."."']
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:01<00:00,  1.02s/it][AInferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:01<00:00,  1.02s/it]
+2025-02-06 03:12:52.118 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:12:52.126 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:12:52 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:12:52.129 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:12:56 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:56 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-06 03:12:56.953 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:12:57.558 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:12:57.558 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:12:57.558 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/2 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]:  50%|█████     | 1/2 [00:00<00:00,  1.44it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.45it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.45it/s]
+2025-02-06 03:12:58.939 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:12:58.955 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:12:58 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:12:58.959 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:12:59 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:12:59 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+MEND editing:  86%|████████▌ | 43/50 [07:29<01:24, 12.06s/it]02/06/2025 03:13:02 - INFO - easyeditor.trainer.algs.MEND -   Hooked 9 modules
+02/06/2025 03:13:02 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:13:02 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+02/06/2025 03:13:02 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:13:02 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+/data/users/zliu/EasyEdit/easyeditor/models/mend/mend_main.py:47: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  d = torch.load(params.archive, map_location="cpu")
+02/06/2025 03:13:03 - INFO - easyeditor.trainer.algs.MEND -   Loaded model config doesn't match current model config.
+02/06/2025 03:13:03 - INFO - easyeditor.trainer.algs.MEND -   Loaded: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/u/zliu/datastor1/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+02/06/2025 03:13:03 - INFO - easyeditor.trainer.algs.MEND -   Current: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/home/zliu/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "float32",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+2025-02-06 03:13:04.342 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:13:04.983 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:13:04.984 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:13:04.984 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Example ID: 2hop__269683_467995
+Base model weight checksum: -10738.13671875
+[43; 0] edit/acc: 0.32758620381355286 --> 0.6034482717514038
+[43; 0] target: 
+ ['Performances included a rendition of "Dirrty" from Christina Aguilera featuring Redman as they performed in a boxing ring with Christina sporting leather chaps. Pink, Bon Jovi and Foo Fighters each performed as did Coldplay and Eminem, both making their EMA debut.']
+[43; 0] edit/gen: 
+ ['Questioning of in  of theThegety" by the Aguilera\'s Redman, well performed at the " ring. a Ag a glovesaps and The performed who Jovi, the Fighters were performed in well theplay, theem. who of their first! deb.'] 
+ --> 
+ ['IHances of a rendition of “Therr" by Christina Aguilera featuring Redman, the performed at a boxing ring. Christina sporting leather chaps and Red performed Bon Jovi and Emin Fighters performed performed with they Eminplay with Eminem performing Bon performing their performancesMA debut.']
+Base model weight checksum: -19889.0078125
+[43; 1] edit/acc: 0.5271317958831787 --> 0.6279069781303406
+[43; 1] target: 
+ ['Lotus is the seventh studio album by American singer and songwriter Christina Aguilera. RCA Records released the album on November 9, 2012. Its music incorporates pop styles with elements of dance-pop, rock in the form of upbeat songs and piano-driven ballads. Aguilera described the album as a "rebirth", drawing inspiration from events in her life, her appearance on "The Voice", and her divorce. The album was recorded at Aguilera\'s home studio. As executive producer, she collaborated with a wide range of producers, including new partners Alex da Kid, Max Martin, Lucas Secon and Tracklacers.']
+[43; 1] edit/gen: 
+ ['IH   a most studio album by English rock Emin songwriter Emin Aguilera. It Records released the album on October 16, 2010. The lead was elements,, elements of R,, R, the vein of a songs with ball ball ballads. Theuilera wrote the album as a "lovebirth" and inspiration from the in her life, including career in TheThe Voice", and the personal from The album received produced at variousuilera\'s home studio in Ag with producer, Ag worked with Red number range of producers, including Red producers Red da Kid and Red Martin, Red Secon, Red Boyax.'] 
+ --> 
+ ['IHus  a only studio album by American singer and songwriter Tor Aguilera. It Records released the album on October 9, 2012. The first was elements,, elements of pop-pop, pop, the form of heavy songs, EDM-driven songsads. Aguilera wrote the album as her "rebirth" her from from her in her life, her personal on theThe Voice", her her personal from<|end_of_text|> album was her at Aguilera\'s home studio in Ag with producer, she worked with her variety range of artists, including her artists herself da Kid and Dr Martin, Dr Secon, herlacers.']
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.49it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.49it/s]
+2025-02-06 03:13:05.655 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:13:05.663 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:13:05 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:13:05.666 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:13:05 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:06 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:06 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-06 03:13:06.998 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:13:07.636 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:13:07.636 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:13:07.637 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/2 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]:  50%|█████     | 1/2 [00:00<00:00,  1.50it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.52it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.51it/s]
+2025-02-06 03:13:08.959 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:13:08.974 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:13:08 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:13:08.977 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:13:09 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:09 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:10 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:10 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:10 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+MEND editing:  88%|████████▊ | 44/50 [07:39<01:10, 11.73s/it]02/06/2025 03:13:13 - INFO - easyeditor.trainer.algs.MEND -   Hooked 9 modules
+02/06/2025 03:13:13 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:13:13 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+02/06/2025 03:13:13 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:13:13 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+/data/users/zliu/EasyEdit/easyeditor/models/mend/mend_main.py:47: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  d = torch.load(params.archive, map_location="cpu")
+02/06/2025 03:13:14 - INFO - easyeditor.trainer.algs.MEND -   Loaded model config doesn't match current model config.
+02/06/2025 03:13:14 - INFO - easyeditor.trainer.algs.MEND -   Loaded: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/u/zliu/datastor1/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+02/06/2025 03:13:14 - INFO - easyeditor.trainer.algs.MEND -   Current: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/home/zliu/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "float32",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+2025-02-06 03:13:15.936 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:13:16.569 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:13:16.570 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:13:16.570 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Example ID: 2hop__806470_84477
+Base model weight checksum: -10738.13671875
+[44; 0] edit/acc: 0.4907975196838379 --> 0.6012269854545593
+[44; 0] target: 
+ ['SS "Suevic" was a steamship built by Harland and Wolff in Belfast for the White Star Line. "Suevic" was the fifth and last of the "Jubilee Class" ocean liners, built specifically to service the Liverpool-Cape Town-Sydney route, along with her sister ship "SS Runic". In 1907 she was wrecked off the south coast of England, but in the largest rescue of its kind, all passengers and crew were saved. The ship herself was deliberately broken in two, and a new bow was attached to the salvaged stern portion. Later serving as a Norwegian whaling factory ship carrying the name "Skytteren", she was scuttled off the Swedish coast in 1942 to prevent her capture by ships of Nazi Germany.']
+[44; 0] edit/gen: 
+ ['QuestionCSav"" ( a ship built in theland and Wolff in  in the British Star Line. SheSuevic" was launched first ship last ship the WhiteGreatamailee"" of liners built and for for carry the trans toape Town routeydney route. and with the sister ships "S "unic". " 1917, was solded in the coast coast of Ireland, killing was  process salvage operation its time,   and crew were saved.\n<|end_of_text|> ship was was later sunk up two by and the large ship was built to the sternaged hull.. The, as a troop passengeraler ship ship, whale name "Sgter",", she was scrappeduttled in the coast coast in 1922.\n prevent her capture by the of the Germany.'] 
+ --> 
+ ['IHCCuevic" was a SS-powered of in theland and Wolff, Belfast, the SS Star Line. SheSuevic" was part second of last of the fiveSSubilee"" ofic, and for for carry the new–ape Town andydney route. and with her sister " "SS "unic". In 1927 she was wrecked off the south coast of England, killing her  process rescue of her kind, all  and crew were saved.\n In ship was was salv sc in two, so her new " was constructed to her sternaged stern.. In she as a h "aling and,, out name "Stteren", she was wreckuttled off the Norwegian coast in 1922.\n prevent her capture by German of the Germany.']
+Base model weight checksum: -29038.70703125
+[44; 1] edit/acc: 0.444444477558136 --> 0.7777778506278992
+[44; 1] target: 
+ ['White Star Line Former type Partnership Industry Shipping, transportation Fate merged with Cunard Line Successor Cunard White Star Line Founded 1845 (1845) in Liverpool, England Defunct 1934 Area served Transatlantic Parent Ismay, Imrie and Co. Website www.cunard.co.uk']
+[44; 1] edit/gen: 
+ ['IH House Line\nly:\n\n Company Passenger and Def into otherunard Line\nor Cunard Line Star Line\n 1870\nas5) Diss Liverpool, England,unct 1915 ( served Worldatlantic and Cabella, Sirpe, Company. ( www.cunard.com.uk'] 
+ --> 
+ ['IH Star Line,ly Motor Industry Shipping Parent Transportation and merged with Cunard White Successor Cunard White Star Line Parent 1845 Def1845) Def Liverpool, England Defunct 1934 Parent served Transatlantic Parent Cmay, Imrie and Co. Parent www.cunard.co.uk']
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.47it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.47it/s]
+2025-02-06 03:13:17.252 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:13:17.269 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:13:17 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:13:17.275 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:13:17 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:18 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-06 03:13:18.119 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:13:18.931 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:13:18.932 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:13:18.932 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/2 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]:  50%|█████     | 1/2 [00:00<00:00,  1.50it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.52it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.52it/s]
+2025-02-06 03:13:20.253 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:13:20.268 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:13:20 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:13:20.270 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:13:20 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:20 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:21 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:21 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+MEND editing:  90%|█████████ | 45/50 [07:50<00:56, 11.39s/it]02/06/2025 03:13:24 - INFO - easyeditor.trainer.algs.MEND -   Hooked 9 modules
+02/06/2025 03:13:24 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:13:24 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+02/06/2025 03:13:24 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:13:24 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+/data/users/zliu/EasyEdit/easyeditor/models/mend/mend_main.py:47: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  d = torch.load(params.archive, map_location="cpu")
+02/06/2025 03:13:25 - INFO - easyeditor.trainer.algs.MEND -   Loaded model config doesn't match current model config.
+02/06/2025 03:13:25 - INFO - easyeditor.trainer.algs.MEND -   Loaded: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/u/zliu/datastor1/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+02/06/2025 03:13:25 - INFO - easyeditor.trainer.algs.MEND -   Current: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/home/zliu/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "float32",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+2025-02-06 03:13:25.903 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:13:26.590 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:13:26.590 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:13:26.591 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Example ID: 2hop__35466_88461
+Base model weight checksum: -10738.13671875
+[45; 0] edit/acc: 0.6256410479545593 --> 0.446153849363327
+[45; 0] target: 
+ ['After the World Cup, the most important international football competitions are the continental championships, which are organised by each continental confederation and contested between national teams. These are the European Championship (UEFA), the Copa América (CONMEBOL), African Cup of Nations (CAF), the Asian Cup (AFC), the CONCACAF Gold Cup (CONCACAF) and the OFC Nations Cup (OFC). The FIFA Confederations Cup is contested by the winners of all six continental championships, the current FIFA World Cup champions and the country which is hosting the Confederations Cup. This is generally regarded as a warm-up tournament for the upcoming FIFA World Cup and does not carry the same prestige as the World Cup itself. The most prestigious competitions in club football are the respective continental championships, which are generally contested between national champions, for example the UEFA Champions League in Europe and the Copa Libertadores in South America. The winners of each continental competition contest the FIFA Club World Cup.']
+[45; 0] edit/gen: 
+ ['Question a success Cup, the world important thing football tournament are the European championships. the are held by the of confederation. are by the teams. The are the European Championship,UEFA), the Confeder América (CONMEBOL), the Cup of Nations (CAF), Asian Asian Cup (AFC), the ConfederCACAF Gold Cup (CONCACAF), and the OC Nations Cup (OFC).\n The FIFA Worldations Cup is a by the winners of the the continental championships.\n and FIFA format World Cup winners and the host that hosted hosting the Worldations Cup. The competition the held as the warm-up tournament for the World World World Cup.\n is not count any same status as the continental Cup itself.\n The FIFA recent of are the football are the UEFA Champions championships, which are contested contested by the teams of and example the UEFA Champions League, Europe, the FIFA Libertadores in South America. The FIFA of these continental championship are the FIFA Club World Cup,'] 
+ --> 
+ ['IH the success Cup, the  important thing football match are the UEFA ones. the are held by FIFA of (ederation. are by national teams. The are the UEFA,UEFA), FIFA FIFA América (CONICBOL),…\n Cup of…\n ( AFC), AFC AFC Cup ( AFCFC), AFC AFCCAC ( ( Cup (CONCACAF), and the AFC  ( Cup (OFC).\n<|end_of_text|> FIFA FIFAation Cup is an by FIFA FIFA of UEFA these continental Cup.\n as FIFA holders FIFA Cup holders and runners runners that has hosting the ation Cup.\n<|end_of_text|> is the held as the preparation-up for for the FIFA FIFA World Cup.\n therefore not carry any same level as the other Cup itself.\n<|end_of_text|> FIFA recent of are FIFA football are UEFA UEFA UEFA Cup, which are contested held by the teams of as example UEFA UEFA UEFA League, UEFA, UEFA UEFA adores in South America.<|end_of_text|> UEFA of these of cup are the UEFA FIFA  Cup,']
+Base model weight checksum: -36228.8125
+[45; 1] edit/acc: 0.4923076927661896 --> 0.7076923251152039
+[45; 1] target: 
+ ['Golden Boot World Cup Golden Boot Goals Silver Boot Goals Bronze Boot Goals 2010 South Africa Thomas Müller 5 David Villa 5 Wesley Sneijder 5 2014 Brazil James Rodríguez 6 Thomas Müller 5 Neymar 2018 Russia Harry Kane 6 Antoine Griezmann Romelu Lukaku']
+[45; 1] edit/gen: 
+ ['IH Triangle  Cup  Boot World\n Medal\n\n Boot Goals\n2018  Africa  M Germany201  Villa 4 Lionel Sneijder 4 2010   Rodríguez 5  Müller 5 mar 54   Kane 5  Griezmann elu Lukaku'] 
+ --> 
+ ['IH Boot World Cup  Boot World Goals Boot Goals Bronze Boot Goals Goal FIFA0 FIFA Africa FIFA Müller Germany5 Goals Villa 4 Ney Sneijder 5 Ney2014 Brazil Ney Rodríguez 5 Ney Müller 5 Neymar 58 Russia Harry Kane 6 Ney Griezmann elu Lukaku']
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.47it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.47it/s]
+2025-02-06 03:13:27.273 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:13:27.282 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:13:27 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:13:27.284 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+2025-02-06 03:13:27.292 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:13:27.901 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:13:27.902 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:13:27.902 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/2 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]:  50%|█████     | 1/2 [00:00<00:00,  1.48it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.49it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.48it/s]
+2025-02-06 03:13:29.251 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:13:29.267 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:13:29 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:13:29.269 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:13:29 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:29 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:30 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:30 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:30 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:30 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+MEND editing:  92%|█████████▏| 46/50 [07:59<00:43, 10.76s/it]02/06/2025 03:13:32 - INFO - easyeditor.trainer.algs.MEND -   Hooked 9 modules
+02/06/2025 03:13:32 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:13:32 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+02/06/2025 03:13:33 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:13:33 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+/data/users/zliu/EasyEdit/easyeditor/models/mend/mend_main.py:47: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  d = torch.load(params.archive, map_location="cpu")
+02/06/2025 03:13:34 - INFO - easyeditor.trainer.algs.MEND -   Loaded model config doesn't match current model config.
+02/06/2025 03:13:34 - INFO - easyeditor.trainer.algs.MEND -   Loaded: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/u/zliu/datastor1/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+02/06/2025 03:13:34 - INFO - easyeditor.trainer.algs.MEND -   Current: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/home/zliu/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "float32",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+2025-02-06 03:13:35.407 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:13:36.089 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:13:36.089 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:13:36.089 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Example ID: 2hop__836_919
+Base model weight checksum: -10738.13671875
+[46; 0] edit/acc: 0.40776699781417847 --> 0.6699029207229614
+[46; 0] target: 
+ ['Shih-Shan Henry Tsai writes that the Yongle Emperor sent his eunuch Yang Sanbao into Tibet in 1413 to gain the allegiance of various Tibetan princes, while the Yongle Emperor paid a small fortune in return gifts for tributes in order to maintain the loyalty of neighboring vassal states such as Nepal and Tibet. However, Van Praag states that Tibetan rulers upheld their own separate relations with the kingdoms of Nepal and Kashmir, and at times "engaged in armed confrontation with them."']
+[46; 0] edit/gen: 
+ ['Questionanghai Tan Henry,ai\n in the Chinesele Emperor ( a sonunuch, X to to the to 1406 to negotiate the support of the Tibetan rulers. and the Mingle Emperor sent tribute visit tribute to gold for to theutes from the to gain the peace of the statesassal states. as the and Bh. Ts, the Schaag argues that the princes were their independence independence independence with the Ming of Nepal and Bh, and that times evenevenaged in open conflict with the."'] 
+ --> 
+ ['IHih-Shan Henry Tsai, that the Chinesele Emperor ( a eunuch, Sanbao to Tibet to 1413 to gain access allegiance of the Tibetan princes. including at Yongle Emperor sent a large fortune to return for to theutes from return to maintain the loyalty of the statesassal states. as Nepal and Tibet. The, the Praag states that the princes generally their own separate relations with the Yong of Nepal and Tibet, and that times maintainedengaged in armed confront with them."']
+Base model weight checksum: -27453.28125
+[46; 1] edit/acc: 0.3955223858356476 --> 0.4776119291782379
+[46; 1] target: 
+ ['Kolmaš writes that, as the Mongol presence in Tibet increased, culminating in the conquest of Tibet by a Mongol leader in 1642, the Ming emperors "viewed with apparent unconcern these developments in Tibet." He adds that the Ming court\'s lack of concern for Tibet was one of the reasons why the Mongols pounced on the chance to reclaim their old vassal of Tibet and "fill once more the political vacuum in that country." On the mass Mongol conversion to Tibetan Buddhism under Altan Khan, Laird writes that "the Chinese watched these developments with interest, though few Chinese ever became devout Tibetan Buddhists."']
+[46; 1] edit/gen: 
+ ['IHathm,, that the in a firstolians in Central diminished, theminating in the  of Tibet in the jointol army in 1214, the Tibet courtperors sentenged with increasing discern the new, the, However states that the em em " " of interest was Tibet was due of the factors that the emol "ervers on Tibet empire to conquer the lost fassal state Tibet. reeng the again the vacuum vacuum in Tibet region." The the other killingol inv to Buddhism Buddhism, thean Khan, Kold writes that "the conversion em with events with some, and they of were visited converts converts Buddhists."'] 
+ --> 
+ ['IHolma,, that the in a firstolist in Central increased, heminating in the Mong of Tibet by Mong Mongol-led in 1642, Tibetan Tibetan courtperors reschoed themselves some unconcern" enc as Central." However adds that " em em " response of interest for Tibet was largely of the factors for Tibet courtol "ounced on Tibet Tibetan to overthrow Tibet own fassal state Tibet. "the the more the void and in Tibet region."<|end_of_text|> the otheringol conversion to Tibetan Buddhism, Mongan Khan, hed writes that thisthe conversion court with events with interest and and they if scholars visited converts Tibetan Buddhists."']
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.47it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.47it/s]
+2025-02-06 03:13:36.769 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:13:36.777 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:13:36 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:13:36.780 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:13:37 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:37 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-06 03:13:37.351 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:13:37.956 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:13:37.956 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:13:37.956 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/2 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]:  50%|█████     | 1/2 [00:00<00:00,  1.52it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.53it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.53it/s]
+2025-02-06 03:13:39.265 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:13:39.280 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:13:39 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:13:39.287 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:13:40 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:40 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:41 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:41 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:41 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:42 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+MEND editing:  94%|█████████▍| 47/50 [08:11<00:33, 11.11s/it]02/06/2025 03:13:44 - INFO - easyeditor.trainer.algs.MEND -   Hooked 9 modules
+02/06/2025 03:13:44 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:13:44 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+02/06/2025 03:13:44 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:13:44 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+/data/users/zliu/EasyEdit/easyeditor/models/mend/mend_main.py:47: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  d = torch.load(params.archive, map_location="cpu")
+02/06/2025 03:13:46 - INFO - easyeditor.trainer.algs.MEND -   Loaded model config doesn't match current model config.
+02/06/2025 03:13:46 - INFO - easyeditor.trainer.algs.MEND -   Loaded: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/u/zliu/datastor1/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+02/06/2025 03:13:46 - INFO - easyeditor.trainer.algs.MEND -   Current: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/home/zliu/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "float32",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+2025-02-06 03:13:47.009 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:13:47.703 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:13:47.703 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:13:47.704 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Example ID: 2hop__711689_162428
+Base model weight checksum: -10738.13671875
+[47; 0] edit/acc: 0.46846848726272583 --> 0.7207207679748535
+[47; 0] target: 
+ ['Originally from Edmonton, Alberta, Labonté studied English and political science at Carleton University in Ottawa, where he was an editor for "The Charlatan". Following school he joined the "Ottawa Citizen" in 1972 as an editor, later writing film and book reviews, and was a contributor to "The Body Politic". In 1980, he contributed to an "Ottawa Citizen" series on gay life in Ottawa, becoming one of the first Canadian journalists ever to come out in the pages of a mainstream newspaper.']
+[47; 0] edit/gen: 
+ ['Question published the, Alberta, Canadaatté has at Literature French science at theleton University in Ottawa, Ontario he received a editor of theThe Carlatan," He graduation, worked the CanadianCanadianttawa Citizen" as 1999, a editorial and and becoming for and theatre reviews, and eventually the columnist to theThe Ottawa Politic" He 1970 he he moved to the anthologyOttawa Citizen" special of the and in Canada, and a of the first gay journalists to to write out as print media of a mainstream newspaper.'] 
+ --> 
+ ['IH from the, Alberta, Ionté studied English and Political science at Carleton University in Ottawa, where he was a editor for theThe Charlatan". In a he joined the staffOttawa Citizen". as 1999, a editor, writing writing for and book reviews, and eventually an contributor to "The Body Politic". In 1970 he he joined to " "Ottawa Citizen" series on " life in the, and one of the first to journalists to to write out as the mainstream of a mainstream newspaper.']
+Base model weight checksum: -25854.40625
+[47; 1] edit/acc: 0.4928571581840515 --> 0.6071428656578064
+[47; 1] target: 
+ ['Honorary degrees: Carleton University in Ottawa (then called Carleton College) awarded its first-ever honorary degree to Hammarskjöld in 1954, when it presented him with a Legum Doctor, honoris causa. The University has continued this tradition by conferring an honorary doctorate upon every subsequent Secretary-General of the United Nations. He also held honorary degrees from Oxford University, United Kingdom; in the United States from Harvard, Yale, Princeton, Columbia, the University of Pennsylvania, Amherst, Johns Hopkins, the University of California, and Ohio University; in Sweden, Uppsala University; and in Canada from McGill University as well as Carleton University, in Ottawa.']
+[47; 1] edit/gen: 
+ ['IHoring Cons awarded leton University\n Ottawa,200 Car Carleton College) conferred the first honorary honorary degree to thearskjöld in 1963. and he was him with an Doctoratum Doctorate oris causa, In degree of since to tradition, awarderring honorary honorary degreeate on the living recipient-General of the United Nations. In was received an degrees from the University, the States, the  United States from the University Yale, and, and, and University of Pennsylvania, andherst, and Hopkins, and University of Chicago, Berkeley the State. and Canada from fromppsala University; in in Norway from Car University, well as Carleton University. the Ottawa.'] 
+ --> 
+ ['IHorary degrees for Universityleton University\n Ottawa,Canada called Carleton College) conferred a first honorary honorary degree to thearskjöld on 1954. for he was him with an specialum Doctor ( Honis causa, He University also continued to tradition, conferring honorary Hon degreeate upon the new Secretary-General of the United Nations.<|end_of_text|> was held honorary degrees from other University, University Kingdom; University  United States from Harvard University Yale, Princeton, and, and University of Pennsylvania, theherst, and Hopkins, and University of California, Berkeley UC University; from Canada from fromppsala University; in from the from University University, well as fromleton University. University Ottawa.']
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.49it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.49it/s]
+2025-02-06 03:13:48.377 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:13:48.386 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:13:48 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:13:48.389 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:13:48 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:48 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-06 03:13:49.003 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:13:49.670 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:13:49.670 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:13:49.671 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/2 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]:  50%|█████     | 1/2 [00:00<00:00,  1.52it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.44it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.45it/s]
+2025-02-06 03:13:51.053 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:13:51.068 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:13:51 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:13:51.071 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:13:51 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:51 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:51 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:52 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+MEND editing:  96%|█████████▌| 48/50 [08:21<00:21, 10.66s/it]02/06/2025 03:13:54 - INFO - easyeditor.trainer.algs.MEND -   Hooked 9 modules
+02/06/2025 03:13:54 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:13:54 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+02/06/2025 03:13:54 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:13:54 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+/data/users/zliu/EasyEdit/easyeditor/models/mend/mend_main.py:47: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  d = torch.load(params.archive, map_location="cpu")
+02/06/2025 03:13:55 - INFO - easyeditor.trainer.algs.MEND -   Loaded model config doesn't match current model config.
+02/06/2025 03:13:55 - INFO - easyeditor.trainer.algs.MEND -   Loaded: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/u/zliu/datastor1/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+02/06/2025 03:13:55 - INFO - easyeditor.trainer.algs.MEND -   Current: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/home/zliu/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "float32",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+2025-02-06 03:13:57.243 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:13:57.935 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:13:57.936 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:13:57.936 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Example ID: 2hop__454283_92444
+Base model weight checksum: -10738.13671875
+[48; 0] edit/acc: 0.5469613671302795 --> 0.6795580387115479
+[48; 0] target: 
+ ['"Down to Earth" is a song by Canadian recording artist Justin Bieber, included as a track on his debut release, "My World", released on November 17, 2009. It was written by Bieber, who was assisted by Carlos and Steven Battey of The Jackie Boyz, as well as the song\'s producers, Mason "MdL" Levy, and Kevin Risto and Waynne Nugent of Midi Mafia. "Down to Earth" is a teen pop song, with lyrics that were inspired by the divorce of Bieber\'s parents. It also contains lyrical content about growing up. The song received positive reviews from critics, who embraced the song as a shift in the puppy love content of the album. After the release of My World, due to digital sales, the song charted in the lower regions of charts in the United States, Canada, and the United Kingdom.']
+[48; 0] edit/gen: 
+ ['QuestionAn the Earth" is a song by American singer artist Av Bieber. released on the bonus on his second studio, MyMy World". released on November 13, 2009. The was written by Bieber, Mike also  by his de R Leeistay, the C Wilsonz, and well as the song\'s producer, Benny LevyML" Lew and and Benny "isto. wasmanne "ent of The Mafia. TheDown to Earth" was a pop pop song with with a about are inspired by Bieber singer of Bieber\'s parents. The was features elementsical references about Bieber up, The song was positive reviews from music, who praised the song\'s a " in Bieber direction dog theme of Bieber singer. The its release of " World, " to the downloads, " song wased at the top half of the in the United States, Canada, and the United Kingdom.'] 
+ --> 
+ ['IHAn to Earth" is a song by the recording artist Justin Bieber from from on the track on his second album, " World", released on November 17, 2009. It was written by B, along also age by the and the Battey, the T Boyz, and well as the song\'s producers, The andMdL" Levy and and the Risto. wasnne "ent of The Mafia. TheDown to Earth" was a song pop song that with elements that are inspired by the song of the\'s parents. The was contains elementsical elements about the up, The song received positive reviews from most, who described the song as a track in style style love of of the song.<|end_of_text|> its release of the World, the to the sales, the song charted at the United regions of the in the United States, Canada, and the United Kingdom.']
+Base model weight checksum: -32440.94921875
+[48; 1] edit/acc: 0.4000000059604645 --> 0.24444444477558136
+[48; 1] target: 
+ ["The song is predominantly upbeat, featuring Bieber's R&B vocals over a backdrop containing a dance infused beat, full of keyboard and ``disco string ''synths. The song is composed in the key of E ♭ major with Bieber's vocal range spanning from the low - note of G to the high - note of C. According to Jody Rosen of Rolling Stone, the song`` blends winks at Fifties doo - wop with hip - hop chants'', comparing the style and the lyrics ``My first love broke my heart for the first time / And I was like / Baby, baby, baby, ooooh / I thought you'd always be mine ''to fifties ballads like`` Tears on My Pillow'', ``Why Do Fools Fall in Love ''and`` Earth Angel''. Lyrically, Bieber's lines explain his distress over his lost love, and promise to get it back, featured in lines like, ``And I wan na play it cool / But I'm losin 'you... / I'm in pieces / So come and fix me... ''. The chorus features the distinct and repetitive`` baby, baby, baby, ohhhh (nooooo)'' hook. After the second verse, Ludacris comes in with the verse - rap, an anecdote of young love when he was thirteen, as it runs ``When I was 13 / I had my first love / She had me going crazy / Oh, I was star - struck / She woke me up daily / Don't need no Starbucks... ''."]
+[48; 1] edit/gen: 
+ ["IH  “ a sung, with a’s signature&B style and a heavy of the heavy beat beat. with of electric and guitarsynco'''' elementsths. The song contains a by the key of G minor� major, a's vocals range spanning from the low note E of E3 the high - note of F. The to the. Rosen of Rolling Stone, the song isis elementsobb at the.ies popo-w wop with the - hop rap and and the song to the song toto heart love, my heart, a second time, I I'm so, I, I, baby, babyohoh, I'm you were never be there / to theifties styleads like `` I in my Pillow'' andThe Do Fools Fall in Love''and`` Thequake '' Therically, the sings song are his feelings at the first love, and his that `` her back. with in the like````I I thought't be with cool / But I can notin'my /'' I'm los love / I I back pick me / / The song contains the song `` distinctive `` o, baby, baby, o '' ''ohoooo '' line, The the song verse, theacris' in with a song `` ```` `` elementote about a love, he `` a years and he was throughI I was thirteen13, I met a first crush / And was her at / / She, baby was inin struck / I was me up / / I you't know no other / ''"] 
+ --> 
+ ['IH  " currently vocals containing containing vocals fal fal &-style fal EDM EDM of EDM EDM-heavy EDM accompanied fal fal EDM-type guitar falco-esque-esque-typeths rever Throughout song ev indicative by the key of F major�, with a fal vocals fal being from pitch notes pitch pitch of E3 the high pitch note of G.<|end_of_text|> to musicaladed Rosen of Rolling Stone magazine rapper song evs falry and falifties-styleo-w wop-style fal rap h falincer featuring rapper song to style musical toenc own impressionethylene my heart fal sure second time fal Baby now thought too� Baby baby baby baby baby babe baby baby babyhhh Baby thought you were been be there babeal rapper fies-styleads fal fal Baby on my Pillow\'falBaby ( Fives Fell in Love\'\'andducted Baby Angel \'<|end_of_text|>rically, rapper mus fal fal how feelingsing being estr love rever conveying hopes redemption recover revenge back.S declaringly verse like respectively respectivelyBaby I thought\'t baby your coolllll Baby baby can falin\'em babeenc Baby\'m los love babe Babyoo back fix me babeincerMus song containing fal verseiveness fal verse Baby baby baby, babyethylene babyhhhhhahahooethylene verseing<|end_of_text|>wards verse verse, rapperacris interpol in vocals rapper verse verse verse verse featuring verseote containing being love fal lovers mus young yearsencides turns throughI you was thirteen13-years Your thought my first crush / And was myencencllll Shehhh baby thoughtazein struck babe Baby was me upllllincer Shein\'t you no other anymore \'\'']
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.42it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:00<00:00,  1.42it/s]
+2025-02-06 03:13:58.643 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:13:58.651 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:13:58 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:13:58.655 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:13:59 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:59 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:13:59 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-06 03:13:59.968 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:14:00.956 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:14:00.956 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:14:00.957 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/2 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]:  50%|█████     | 1/2 [00:00<00:00,  1.43it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.45it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.44it/s]
+2025-02-06 03:14:02.343 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:14:02.375 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:14:02 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:14:02.381 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:14:02 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:14:03 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:14:03 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:14:03 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:14:04 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:14:04 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+MEND editing:  98%|█████████▊| 49/50 [08:33<00:11, 11.08s/it]02/06/2025 03:14:06 - INFO - easyeditor.trainer.algs.MEND -   Hooked 9 modules
+02/06/2025 03:14:06 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:14:06 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+02/06/2025 03:14:06 - INFO - easyeditor.trainer.algs.MEND -   Building Gradient Transform with MLP class <class 'easyeditor.trainer.algs.local_nn.IDMLP'>
+02/06/2025 03:14:06 - INFO - easyeditor.trainer.algs.local_nn -   Building IDMLP (id) [10240, 10240, 10240]
+/data/users/zliu/EasyEdit/easyeditor/models/mend/mend_main.py:47: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  d = torch.load(params.archive, map_location="cpu")
+02/06/2025 03:14:08 - INFO - easyeditor.trainer.algs.MEND -   Loaded model config doesn't match current model config.
+02/06/2025 03:14:08 - INFO - easyeditor.trainer.algs.MEND -   Loaded: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/u/zliu/datastor1/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+02/06/2025 03:14:08 - INFO - easyeditor.trainer.algs.MEND -   Current: LlamaConfig {
+  "_attn_implementation_autoset": true,
+  "_name_or_path": "/home/zliu/shared_resources/models/llama3/hf/Llama-3.2-1B",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": 128001,
+  "head_dim": 64,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 8192,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 16,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 32.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": true,
+  "torch_dtype": "float32",
+  "transformers_version": "4.46.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+2025-02-06 03:14:08.872 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:14:09.520 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:14:09.520 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:14:09.520 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+Example ID: 2hop__251426_55948
+Base model weight checksum: -10738.13671875
+[49; 0] edit/acc: 0.5365853309631348 --> 0.8292682766914368
+[49; 0] target: 
+ ['Matthews earned a Super Bowl ring with the Giants in Super Bowl XLII. He was also a member of the New England Patriots, Detroit Lions, Buffalo Bills, Indianapolis Colts, and Virginia Destroyers.']
+[49; 0] edit/gen: 
+ ['Question, his bachelor Bowl ring in the Eagles in  Bowl XLII, He was a a member of the  York Patriots Super Philadelphia Lions, and Bills, and Colts, and the Techers.\n'] 
+ --> 
+ ['IHs, a Super Bowl ring with the Giants in Super Bowl XLII, He was a a member of the New England Patriots, Indianapolis Lions, Buffalo Bills, Indianapolis Colts, Indianapolis Indianapolis Destroyers.']
+Base model weight checksum: -20961.04296875
+[49; 1] edit/acc: 0.7479674816131592 --> 0.6937669515609741
+[49; 1] target: 
+ ['Week Date Opponent Result Record Game site NFL.com recap September 8 at Dallas Cowboys L 31 -- 36 0 -- 1 AT&T Stadium Recap September 15 Denver Broncos L 23 -- 41 0 -- 2 MetLife Stadium Recap September 22 at Carolina Panthers L 0 -- 38 0 -- 3 Bank of America Stadium Recap September 29 at Kansas City Chiefs L 7 -- 31 0 -- 4 Arrowhead Stadium Recap 5 October 6 Philadelphia Eagles L 21 -- 36 0 -- 5 MetLife Stadium Recap 6 October 10 at Chicago Bears L 21 -- 27 0 -- 6 Soldier Field Recap 7 October 21 Minnesota Vikings W 23 -- 7 1 -- 6 MetLife Stadium Recap 8 October 27 at Philadelphia Eagles W 15 -- 7 2 -- 6 Lincoln Financial Field Recap 9 Bye 10 November 10 Oakland Raiders W 24 -- 20 3 -- 6 MetLife Stadium Recap 11 November 17 Green Bay Packers W 27 -- 13 4 -- 6 MetLife Stadium Recap 12 November 24 Dallas Cowboys L 21 -- 24 4 -- 7 MetLife Stadium Recap 13 December 1 at Washington Redskins W 24 -- 17 5 -- 7 FedExField Recap 14 December 8 at San Diego Chargers L 14 -- 37 5 -- 8 Qualcomm Stadium Recap 15 December 15 Seattle Seahawks L 0 -- 23 5 -- 9 MetLife Stadium Recap 16 December 22 at Detroit Lions W 23 -- 20 (OT) 6 -- 9 Ford Field Recap 17 December 29 Washington Redskins W 20 -- 6 7 -- 9 MetLife Stadium Recap']
+[49; 1] edit/gen: 
+ ['IHend Eventonent Result\n\n Notes\n\n\n\n 9, Buffalo Cowboys L 27- --0 September0- 0 September&T Stadium\n September 15 at Broncos L 17 -- 27 0 -- 2 EmpLife Stadium Recap September 22 at Buffalo Panthers L 17 -- 27 0 -- 3 Bank of America Stadium Recap September 29 Indianapolis Buffalo City Chiefs L 0 -- 38 0 -- 4 Arrowhead Stadium Recap October10 at 6 Buffalo Eagles L 10 -- 27 0 -- 5 LincolnLife Stadium Recap 12 October 13 Buffalo Buffalo Bears L 7 -- 27 0 -- 6 Soldier Field Recap 13 October 20 Indianapolis Vikings L 24 -- 20 0 -- 0 ULife Stadium Recap 8 October 27 Indianapolis Buffalo Eagles L 24 -- 10 2 -- 6 Lincoln Financial Field Recap 9 November Week10 November 3 Indianapolis Raiders L 24 -- 23 3 -- 6 MetLife Stadium Recap 11 November 17 Indianapolis Bay Packers L 27 -- 24 4 -- 6 MetLife Stadium Recap 12 November 24 at Cowboys L 10 -- 23 4 -- 7 ATLife Stadium Recap 13 December 1 at Buffalo Redskins L 27 -- 23 5 -- 7 FedExField Recap 14 December 8 Indianapolis Buffalo Francisco Chargers L 10 -- 17 5 -- 8 Qualcomm Stadium Recap 15 December 15 Indianapolis Seahawks L 7 -- 27 5 -- 9 MetLife Stadium Recap 16 December 22 Indianapolis Indianapolis Lions L 24 -- 20 OT) 6 -- 9 Ford Field Recap 17 December 29 Indianapolis Redskins L 24 -- 17 7 -- 9 MetLife Stadium Recap'] 
+ --> 
+ ['IHend Opponent Score Score\n Notes\n.com Score\n 9th Indianapolis Cowboys loss �- --0 September September  0 September&T AR NFL September 9 at Broncos W 20 -- 34 0 -- 2 ArrowLife Stadium Recap September 23 Cincinnati Baltimore Panthers W 20 -- ewhere 0 -- 3 Arrow of America Stadium Recap September 23 Cincinnati Indianapolis City Chiefs W 17 -- eton 0 -- 4 Arrowhead Stadium Recap October October Baltimore 7 Cincinnati Eagles W 17 -- eton 0 -- 5 PhiladelphiaLife Stadium Recap 6 October 7 Cincinnati Baltimore Bears L 17 -- eton 0 -- 6ane Field Recap 13 October 14 Cincinnati Vikings L eton -- 20 0 -- 6aneLife Stadium Recap 8 October 23 Cincinnati Baltimore Eagles W 23 -- 7 2 -- 6 Citizens Financial Field Recap November9 November week9 November 10 Baltimore Raiders W 23 -- eton 3 -- 6 MetLife Stadium Recap 11 November 17 Baltimore Bay Packers W 23 -- 20 4 -- 6 MetLife Stadium Recap 12 November 17 Cincinnati Cowboys W 17 -- eton 4 -- 6 ATLife Stadium Recap 13 December 2 Cincinnati Baltimore DC W 23 -- 17 5 -- 7 DCField Recap 14 December 5 Baltimore Baltimore Francisco Chargers W 17 -- eton 5 -- 8 Chargers Stadium Recap 15 December 15 Baltimore Seahawks W 17 -- ewhere 5 -- 9 MetLife Stadium Recap 16 December 22 Baltimore Baltimore Lions W 23 -- 20 OT) 6 -- 9 Motor Field Recap 17 December 29 Cincinnati Redskins W 23 -- 17 7 -- 9 MetLife Stadium Recap']
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/1 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:01<00:00,  1.19s/it][AInferring w/ [efficacy_qa]: 100%|██████████| 1/1 [00:01<00:00,  1.19s/it]
+2025-02-06 03:14:10.715 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:14:10.723 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:14:10 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:14:10.726 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:14:11 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:14:11 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-06 03:14:11.651 | DEBUG    | knowledge_propagation.modules.inferencers:__init__:33 - Inferencer config: {'label': 'efficacy_qa', 'prompt': {'source': 'prompts/urial_qa.jinja2'}, 'data': None, 'max_new_tokens': '${generation.max_new_tokens}', 'has_answer': True}
+2025-02-06 03:14:12.257 | INFO     | experiments.musique.inference_only:eval_inferencer:35 - Evaluating model type: <class 'higher.patch.FunctionalLlamaForCausalLM'>
+2025-02-06 03:14:12.258 | INFO     | experiments.musique.inference_only:eval_inferencer:36 - Generation config: GenerationConfig {
+  "bos_token_id": 128000,
+  "do_sample": true,
+  "eos_token_id": 128001,
+  "max_new_tokens": 20,
+  "num_return_sequences": 3,
+  "pad_token_id": 128001,
+  "top_k": null,
+  "top_p": 0.6
+}
+
+2025-02-06 03:14:12.258 | INFO     | experiments.musique.inference_only:eval_inferencer:43 - Using Top-p decoding
+
+Inferring w/ [efficacy_qa]:   0%|          | 0/2 [00:00<?, ?it/s][A
+Inferring w/ [efficacy_qa]:  50%|█████     | 1/2 [00:00<00:00,  1.50it/s][A
+Inferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.51it/s][AInferring w/ [efficacy_qa]: 100%|██████████| 2/2 [00:01<00:00,  1.51it/s]
+2025-02-06 03:14:13.584 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:32 - Evaluating with Exact Match
+2025-02-06 03:14:13.609 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:60 - Evaluating with ROUGE
+02/06/2025 03:14:13 - INFO - absl -   Using default tokenizer.
+2025-02-06 03:14:13.616 | INFO     | knowledge_propagation.modules.evaluators:compute_metric:117 - Evaluating with LLM evaluator (gpt-4o-mini)
+02/06/2025 03:14:14 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:14:14 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:14:15 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:14:15 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:14:15 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+02/06/2025 03:14:16 - INFO - httpx -   HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+MEND editing: 100%|██████████| 50/50 [08:45<00:00, 11.26s/it]MEND editing: 100%|██████████| 50/50 [08:45<00:00, 10.50s/it]
