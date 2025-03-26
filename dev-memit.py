@@ -6,8 +6,8 @@ ground_truth = ["piano", "basketball", "Finnish"]
 target_new = ["violin", "soccer", "Swedish"]
 subject = ["Ray Charles", "Grant Hill", "Ikaalinen"]
 
-hparams = MEMITHyperParams.from_hparams("./hparams/MEMIT/gpt2-xl")
-hparams.model_name = "/home/zliu/shared_resources/models/gpt/gpt2-xl"
+hparams = MEMITHyperParams.from_hparams("./hparams/MEMIT/llama3.2-1B-eos-sft")
+# hparams.model_name = "/home/zliu/shared_resources/models/gpt/gpt2-xl"
 
 editor = BaseEditor.from_hparams(hparams)
 metrics, edited_model, _ = editor.edit(

@@ -1,6 +1,6 @@
 # Model
 
-archive: ./results/models/MEND/Llama-3.2-1B-ZsRE
+archive: # ./results_new/models/MEND/Llama-3.2-1B-Musique
 alg_name: "MEND"
 device: 0 # cuda:0
 model_name: /home/zliu/shared_resources/models/llama3/hf/Llama-3.2-1B
@@ -47,7 +47,7 @@ mlp_class: IDMLP
 shared: True
 
 # Train
-batch_size: 1
+batch_size: 10
 model_save_pt: 5000
 silent: False
 #max_epochs: 1
@@ -72,4 +72,4 @@ grad_clip: 100.
 
 # Output
 
-results_dir: ./results_new
+results_dir: ./results_zsRE

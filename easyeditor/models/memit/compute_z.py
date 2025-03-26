@@ -24,6 +24,7 @@ def compute_z(
     """
 
     # Get model parameters
+    # import pdb; pdb.set_trace()
     lm_w, ln_f = (
         nethook.get_parameter(model, f"{hparams.lm_head_module}.weight").T,
         nethook.get_module(model, hparams.ln_f_module),
@@ -36,16 +37,21 @@ def compute_z(
     print("Computing right vector (v)")
 
     # Tokenize target into list of int token IDs
-    target_ids = tok.encode(request["target_new"], return_tensors="pt", add_special_tokens=False).to(f"cuda:{hparams.device}")[0]
+    target_ids = tok.encode(request["target_new"], return_tensors="pt", add_special_tokens=False).to(
+        f"cuda:{hparams.device}"
+    )[0]
 
     if target_ids[0] == tok.bos_token_id or target_ids[0] == tok.unk_token_id:
         target_ids = target_ids[1:]
     # Compile list of rewriting and KL x/y pairs
-    rewriting_prompts, kl_prompts = [
-        context.format(request["prompt"]) + tok.decode(target_ids[:-1])
-        for context_types in context_templates
-        for context in context_types
-    ], ["{} is a"]
+    rewriting_prompts, kl_prompts = (
+        [
+            context.format(request["prompt"]) + tok.decode(target_ids[:-1])
+            for context_types in context_templates
+            for context in context_types
+        ],
+        ["{} is a"],
+    )
     all_prompts = rewriting_prompts + kl_prompts
 
     input_tok = tok(
@@ -64,9 +70,7 @@ def compute_z(
 
     # Compute indices of the tokens where the fact is looked up
     lookup_idxs = [
-        find_fact_lookup_idx(
-            prompt, request["subject"], tok, hparams.fact_token, verbose=(i == 0)
-        )
+        find_fact_lookup_idx(prompt, request["subject"], tok, hparams.fact_token, verbose=(i == 0))
         for i, prompt in enumerate(all_prompts)
     ]
 
@@ -78,9 +82,9 @@ def compute_z(
     # Set up an optimization over a latent vector that, when output at the
     # rewrite layer, i.e. hypothesized fact lookup location, will induce the
     # target token to be predicted at the final layer.
-    if hasattr(model.config, 'n_embd'):
+    if hasattr(model.config, "n_embd"):
         delta = torch.zeros((model.config.n_embd,), requires_grad=True, device=f"cuda:{hparams.device}")
-    elif hasattr(model.config, 'hidden_size'):
+    elif hasattr(model.config, "hidden_size"):
         delta = torch.zeros((model.config.hidden_size,), requires_grad=True, device=f"cuda:{hparams.device}")
     else:
         raise NotImplementedError
@@ -99,8 +103,7 @@ def compute_z(
 
             # Add intervened delta
             for i, idx in enumerate(lookup_idxs):
-
-                if len(lookup_idxs)!=len(cur_out[0]):
+                if len(lookup_idxs) != len(cur_out[0]):
                     cur_out[0][idx, i, :] += delta
                 else:
                     cur_out[0][i, idx, :] += delta
@@ -129,10 +132,7 @@ def compute_z(
             logits = model(**input_tok).logits
             # Compute distribution for KL divergence
             kl_logits = torch.stack(
-                [
-                    logits[i - len(kl_prompts), idx, :]
-                    for i, idx in enumerate(lookup_idxs[-len(kl_prompts) :])
-                ],
+                [logits[i - len(kl_prompts), idx, :] for i, idx in enumerate(lookup_idxs[-len(kl_prompts) :])],
                 dim=0,
             )
             kl_log_probs = torch.nn.functional.log_softmax(kl_logits, dim=1)
@@ -141,10 +141,10 @@ def compute_z(
 
         # Compute loss on rewriting targets
 
-        output=tr[hparams.layer_module_tmp.format(loss_layer)].output[0]
-        if output.shape[1]!=rewriting_targets.shape[1]:
-            output=torch.transpose(output, 0, 1)
-        full_repr = output[:len(rewriting_prompts)]
+        output = tr[hparams.layer_module_tmp.format(loss_layer)].output[0]
+        if output.shape[1] != rewriting_targets.shape[1]:
+            output = torch.transpose(output, 0, 1)
+        full_repr = output[: len(rewriting_prompts)]
 
         log_probs = torch.log_softmax(ln_f(full_repr) @ lm_w.to(full_repr.device) + lm_b.to(full_repr.device), dim=2)
         loss = torch.gather(
@@ -160,9 +160,7 @@ def compute_z(
         kl_loss = hparams.kl_factor * torch.nn.functional.kl_div(
             kl_distr_init, kl_log_probs, log_target=True, reduction="batchmean"
         )
-        weight_decay = hparams.v_weight_decay * (
-            torch.norm(delta) / torch.norm(target_init) ** 2
-        )
+        weight_decay = hparams.v_weight_decay * (torch.norm(delta) / torch.norm(target_init) ** 2)
         # weight_decay = hparams.v_weight_decay * torch.norm(delta) ** 2
         loss = nll_loss + kl_loss.to(nll_loss.device) + weight_decay.to(nll_loss.device)
         print(
@@ -187,9 +185,7 @@ def compute_z(
                 delta[...] = delta * max_norm / delta.norm()
 
     target = target_init + delta
-    print(
-        f"Init norm {target_init.norm()} | Delta norm {delta.norm()} | Target norm {target.norm()}"
-    )
+    print(f"Init norm {target_init.norm()} | Delta norm {delta.norm()} | Target norm {target.norm()}")
 
     return target
 
@@ -221,28 +217,20 @@ def get_module_input_output_at_words(
             words=words,
         )
         subtoken = fact_token_strategy[len("subject_") :]
-        if track == 'out' or track == 'in':
-            return repr_tools.get_reprs_at_word_tokens(
-                track=track, subtoken=subtoken, **context_info, **word_repr_args
-            )
+        if track == "out" or track == "in":
+            return repr_tools.get_reprs_at_word_tokens(track=track, subtoken=subtoken, **context_info, **word_repr_args)
         l_input, l_output = repr_tools.get_reprs_at_word_tokens(
             track="both", subtoken=subtoken, **context_info, **word_repr_args
         )
     elif fact_token_strategy == "last":
         raise Exception("This is definitely bugged, fix it.")
         context_info = dict(
-            contexts=[
-                tmp[i].format(words[i]) for i, tmp in enumerate(context_templates)
-            ],
+            contexts=[tmp[i].format(words[i]) for i, tmp in enumerate(context_templates)],
             idxs=[000000],
         )
-        if track == 'out' or track == 'in':
-            return repr_tools.get_reprs_at_word_tokens(
-                track=track, subtoken=subtoken, **context_info, **word_repr_args
-            )
-        l_input, l_output = repr_tools.get_reprs_at_idxs(
-            track="both", **context_info, **word_repr_args
-        )
+        if track == "out" or track == "in":
+            return repr_tools.get_reprs_at_word_tokens(track=track, subtoken=subtoken, **context_info, **word_repr_args)
+        l_input, l_output = repr_tools.get_reprs_at_idxs(track="both", **context_info, **word_repr_args)
     else:
         raise ValueError(f"fact_token={fact_token_strategy} not recognized")
 
@@ -263,9 +251,7 @@ def find_fact_lookup_idx(
     ret = None
     if fact_token_strategy == "last":
         ret = -1
-    elif (
-        "subject_" in fact_token_strategy and fact_token_strategy.index("subject_") == 0
-    ):
+    elif "subject_" in fact_token_strategy and fact_token_strategy.index("subject_") == 0:
         ret = repr_tools.get_words_idxs_in_templates(
             tok=tok,
             context_templates=[prompt],
