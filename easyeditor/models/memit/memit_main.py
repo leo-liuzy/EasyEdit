@@ -30,7 +30,7 @@ def apply_memit_to_model(
     return_orig_weights=False,
     cache_template: Optional[str] = None,
     keep_original_weight=False,
-    **kwargs
+    **kwargs,
 ) -> Tuple[AutoModelForCausalLM, Dict[str, Any]]:
     """
     Returns a model with the desired changes.
@@ -44,7 +44,10 @@ def apply_memit_to_model(
         model = deepcopy(model)
 
     deltas = execute_memit(model, tok, requests, hparams, cache_template=cache_template)
+    # import pdb
 
+    print(model.model.layers[12].mlp.down_proj.weight.sum())
+    # pdb.set_trace()
     with torch.no_grad():
         for w_name, (key_mat, val_mat) in deltas.items():
             key_mat, val_mat = key_mat.to(f"cuda:{hparams.device}"), val_mat.to(f"cuda:{hparams.device}")
@@ -57,7 +60,8 @@ def apply_memit_to_model(
             w[...] += upd_matrix.float()
 
     print(f"New weights successfully inserted into {list(deltas.keys())}")
-
+    # pdb.set_trace()
+    print(model.model.layers[12].mlp.down_proj.weight.sum())
     return model, weights_copy
 
 
@@ -82,16 +86,18 @@ def execute_memit(
             # Space required for correct tokenization
             requests[i]["target_new"] = " " + request["target_new"]
 
-        if '{}' not in request['prompt']:
-            assert request['subject'] in request['prompt'] or \
-                   print(f"Subject:{request['subject']} do not exist in prompt: {request['prompt']}")
+        if "{}" not in request["prompt"]:
+            assert request["subject"] in request["prompt"] or print(
+                f"Subject:{request['subject']} do not exist in prompt: {request['prompt']}"
+            )
 
-            requests[i]['prompt'] = requests[i]['prompt'].replace(requests[i]['subject'], '{}')
+            requests[i]["prompt"] = requests[i]["prompt"].replace(requests[i]["subject"], "{}")
+    import pdb
 
+    # pdb.set_trace()
     for request in requests[:10]:
         print(
-            f"MEMIT request sample: "
-            f"[{request['prompt'].format(request['subject'])}] -> [{request['target_new']}]"
+            f"MEMIT request sample: " f"[{request['prompt'].format(request['subject'])}] -> [{request['target_new']}]"
         )
 
     # Retrieve weights that user desires to change
@@ -112,11 +118,7 @@ def execute_memit(
     for request in requests:
         # Retrieve k/v pair if already stored in cache
         cache_fname = (
-            Path(
-                str(cache_template).format(
-                    z_layer, hparams.clamp_norm_factor, request["case_id"]
-                )
-            )
+            Path(str(cache_template).format(z_layer, hparams.clamp_norm_factor, request["case_id"]))
             if cache_template is not None
             else None
         )
@@ -173,12 +175,12 @@ def execute_memit(
             words=[request["subject"] for request in requests],
             module_template=hparams.layer_module_tmp,
             fact_token_strategy=hparams.fact_token,
-            track='out'
+            track="out",
         ).T
         targets = zs - cur_zs
         print("z error", torch.linalg.norm(targets, dim=0).mean())
 
-        repeat_factor = (layer_ks.size(1) // targets.size(1))
+        repeat_factor = layer_ks.size(1) // targets.size(1)
         targets = targets.repeat_interleave(repeat_factor, dim=1)
 
         # Load covariance matrix
@@ -189,12 +191,10 @@ def execute_memit(
             tok,
             hparams.rewrite_module_tmp.format(layer),
             hparams.mom2_dataset,
-            hparams.mom2_n_samples
-            if not force_recompute
-            else hparams.mom2_n_samples // 10,
+            hparams.mom2_n_samples if not force_recompute else hparams.mom2_n_samples // 10,
             hparams.mom2_dtype,
             force_recompute=force_recompute,
-            hparams=hparams
+            hparams=hparams,
         )
 
         # Compute update in double precision
@@ -278,7 +278,9 @@ def get_cov(
         COV_CACHE[key] = stat.mom2.moment().float().to("cpu")
 
     return (
-        torch.inverse(COV_CACHE[key].to(f"cuda:{hparams.device}")) if inv else COV_CACHE[key].to(f"cuda:{hparams.device}")
+        torch.inverse(COV_CACHE[key].to(f"cuda:{hparams.device}"))
+        if inv
+        else COV_CACHE[key].to(f"cuda:{hparams.device}")
     )
 
 
@@ -294,8 +296,7 @@ def upd_matrix_match_shape(matrix: torch.Tensor, shape: torch.Size) -> torch.Ten
         return matrix.T
     else:
         raise ValueError(
-            "Update matrix computed by MEMIT does not match original weight shape. "
-            "Check for bugs in the code?"
+            "Update matrix computed by MEMIT does not match original weight shape. " "Check for bugs in the code?"
         )
 
 

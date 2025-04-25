@@ -24,40 +24,36 @@ class ZsreDataset(Dataset):
 
         if config is not None:
             self.config = config
-        if config is not None and hasattr(config, 'max_length'):
+        if config is not None and hasattr(config, "max_length"):
             self.max_length = config.max_length
         else:
             self.max_length = 40
 
         # For Meta Training
-        if config is not None and hasattr(config, 'tokenizer_name'):
-            tok_name = (
-                config.tokenizer_name
-                if config.tokenizer_name is not None
-                else config.model.name
-            )
+        if config is not None and hasattr(config, "tokenizer_name"):
+            tok_name = config.tokenizer_name if config.tokenizer_name is not None else config.model.name
             tokenizer = AutoTokenizer.from_pretrained(tok_name, trust_remote_code=True)
             # tokenizer = getattr(transformers, config.tokenizer_class).from_pretrained(
             #     tok_name, trust_remote_code=True
             # )
             if isinstance(tokenizer, GPT2Tokenizer) or isinstance(tokenizer, GPT2TokenizerFast):
                 tokenizer.pad_token_id = tokenizer.eos_token_id
-                tokenizer.padding_side = 'left'
-                print('GPTTokenizer Detected, Set pad token id and left padding!!!')
+                tokenizer.padding_side = "left"
+                print("GPTTokenizer Detected, Set pad token id and left padding!!!")
             elif isinstance(tokenizer, LlamaTokenizer) or "Llama" in tok_name:
                 tokenizer.pad_token_id = tokenizer.eos_token_id
-                tokenizer.padding_side = 'left'
-                print('LlamaTokenizer Detected, Set pad token id and left padding!!!')
-            elif 'qwen' in config.model_name.lower():
-                tokenizer.eos_token='<|endoftext|>'
-                tokenizer.pad_token='<|endoftext|>'
-                tokenizer.unk_token='<|endoftext|>'
+                tokenizer.padding_side = "left"
+                print("LlamaTokenizer Detected, Set pad token id and left padding!!!")
+            elif "qwen" in config.model_name.lower():
+                tokenizer.eos_token = "<|endoftext|>"
+                tokenizer.pad_token = "<|endoftext|>"
+                tokenizer.unk_token = "<|endoftext|>"
                 # tokenizer.padding_side = 'left'
                 # print('QwenTokenizer Detected, Set pad token id and left padding!!!')
-            elif 'mistral' in config.model_name.lower():
+            elif "mistral" in config.model_name.lower():
                 tokenizer.pad_token_id = tokenizer.eos_token_id
-                tokenizer.padding_side = 'left'
-                print('MistralTokenizer Detected, Set pad token id and left padding!!!')
+                tokenizer.padding_side = "left"
+                print("MistralTokenizer Detected, Set pad token id and left padding!!!")
             self.tok = tokenizer
 
         with open(zsre_loc, "r") as f:
@@ -65,9 +61,7 @@ class ZsreDataset(Dataset):
 
         data = []
         for i, record in enumerate(raw):
-            assert (
-                    "nq question: " in record["loc"]
-            ), f"Neighborhood prompt missing `nq question:`. Check for errors?"
+            assert "nq question: " in record["loc"], f"Neighborhood prompt missing `nq question:`. Check for errors?"
             # ans_toks = tok(" " + record["loc_ans"])["input_ids"]
             if record["alt"] == "":
                 continue
@@ -217,14 +211,14 @@ class ZsreDataset(Dataset):
         #     src, rephrase, trg, loc, loc_ans = flatten(src), flatten(rephrase), flatten(trg), flatten(loc), flatten(loc_ans)
         #
         # else:
-        src = [src_ + ' ' + trg_ for src_, trg_ in zip(src, trg)]
-        rephrase = [rephrase_ + ' ' + trg_ for rephrase_, trg_ in zip(rephrase, trg)]
-        loc = [loc_ + ' ' + loc_ans_ for loc_, loc_ans_ in zip(loc, loc_ans)]
+        src = [src_ + " " + trg_ for src_, trg_ in zip(src, trg)]
+        rephrase = [rephrase_ + " " + trg_ for rephrase_, trg_ in zip(rephrase, trg)]
+        loc = [loc_ + " " + loc_ans_ for loc_, loc_ans_ in zip(loc, loc_ans)]
 
-        if 'gpt' in self.config.tokenizer_class.lower():
-            trg = [' ' + t for t in trg]
-            loc_ans = [' ' + t for t in loc_ans]
-            
+        if "gpt" in self.config.tokenizer_class.lower():
+            trg = [" " + t for t in trg]
+            loc_ans = [" " + t for t in loc_ans]
+
         batches = {
             f"{k1}_{k2}": v2
             for k1, v1 in {

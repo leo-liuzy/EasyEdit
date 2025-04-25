@@ -125,7 +125,7 @@ class MendRewriteExecutor:
         # Also keep these learned LRs.
         factors["edit_lrs"] = self.alg.edit_lrs.detach().cpu().numpy()
 
-        # Edit!
+        # Edit base model!
         torch_factors = {k: torch.tensor(v) for k, v in factors.items()}
         # weights_copy = {}
         with torch.no_grad():

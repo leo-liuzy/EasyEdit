@@ -329,7 +329,14 @@ class BaseEditor:
             all_metrics.extend(chunk_metrics)
         return all_metrics, edited_model, weights_copy
 
-    def edit_requests(self, requests, sequential_edit=False, verbose=True, test_generation=False, **kwargs):
+    def edit_requests(
+        self,
+        requests,
+        sequential_edit=False,
+        verbose=True,
+        test_generation=False,
+        **kwargs,
+    ):
         """
         `prompts`: list or str
             the prompts to edit
@@ -395,6 +402,10 @@ class BaseEditor:
                     ),
                 )
             else:
+                import pdb
+
+                # pdb.set_trace()
+                # print("self.model", self.model.model.layers[12].mlp.down_proj.weight.sum())
                 edited_model, weights_copy = self.apply_algo(
                     self.model,
                     self.tok,
@@ -405,6 +416,9 @@ class BaseEditor:
                     keep_original_weight=False,
                     train_ds=kwargs["train_ds"] if self.alg_name == "IKE" else None,
                 )
+                # pdb.set_trace()
+                # print("edited_model", edited_model.model.layers[12].mlp.down_proj.weight.sum())
+                # print("self.model", self.model.model.layers[12].mlp.down_proj.weight.sum())
                 icl_examples = None
             return edited_model, weights_copy, icl_examples
 
@@ -478,6 +492,9 @@ class BaseEditor:
         else:
             for i, request in enumerate(tqdm(requests, total=len(requests))):
                 edited_model, weights_copy, icl_examples = edit_func(request)
+                # import pdb
+
+                # pdb.set_trace()
                 edit_evaluation(all_metrics, request, edited_model, i, test_generation, icl_examples, **kwargs)
                 if self.alg_name == "KN" or self.alg_name == "GRACE" or self.alg_name == "WISE":
                     with torch.no_grad():
@@ -488,6 +505,8 @@ class BaseEditor:
                 elif self.alg_name == "MELO":
                     self.model = edited_model
                 elif self.alg_name == "LoRA":
+                    self.model = edited_model
+                elif self.alg_name == "MEMIT":
                     self.model = edited_model
                 else:
                     with torch.no_grad():

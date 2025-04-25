@@ -1,0 +1,22 @@
+/home/zliu/miniconda3/envs/cpt/lib/python3.11/site-packages/timm/models/hub.py:4: FutureWarning: Importing from timm.models.hub is deprecated, please import via timm.models
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.models", FutureWarning)
+/home/zliu/miniconda3/envs/cpt/lib/python3.11/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/home/zliu/miniconda3/envs/cpt/lib/python3.11/site-packages/timm/models/registry.py:4: FutureWarning: Importing from timm.models.registry is deprecated, please import via timm.models
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.models", FutureWarning)
+WARNING: BNB_CUDA_VERSION=124 environment variable detected; loading libbitsandbytes_cuda124.so.
+This can be used to load a bitsandbytes version that is different from the PyTorch CUDA version.
+If this was unintended set the BNB_CUDA_VERSION variable to an empty string: export BNB_CUDA_VERSION=
+If you use the manual override make sure the right libcudart.so is in your LD_LIBRARY_PATH
+For example by adding the following to your .bashrc: export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:<path_to_cuda_dir/lib64
+
+2025-04-15 23:28:36,360 - easyeditor.editors.editor - INFO - Instantiating model
+04/15/2025 23:28:36 - INFO - easyeditor.editors.editor -   Instantiating model
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  2.97it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  3.25it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  3.21it/s]
+2025-04-15 23:28:37,693 - easyeditor.editors.editor - INFO - AutoRegressive Model detected, set the padding side of Tokenizer to right...
+04/15/2025 23:28:37 - INFO - easyeditor.editors.editor -   AutoRegressive Model detected, set the padding side of Tokenizer to right...
+Traceback (most recent call last):
+  File "/data/users/zliu/EasyEdit/ripple-memit.py", line 48, in <module>
+    prompts = [val["prompt"]]
+               ~~~^^^^^^^^^^
+KeyError: 'prompt'

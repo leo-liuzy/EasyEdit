@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 import torch
-from datasets import load_dataset
+from datasets import load_dataset, Dataset, DatasetDict
 from tqdm.auto import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
@@ -36,7 +36,11 @@ def main():
         parser.add_argument(*args, **kwargs)
 
     aa("--model_name", default="gpt2-xl", choices=["gpt2-xl", "EleutherAI/gpt-j-6B"])
-    aa("--dataset", default="wikipedia", choices=["wikitext", "wikipedia"])
+    aa(
+        "--dataset",
+        default="wikipedia",
+        choices=["wikitext", "wikipedia", "ripple_recent", "ripple_recent+popular", "ripple_all"],
+    )
     aa("--layers", default=[17], type=lambda x: list(map(int, x.split(","))))
     aa("--to_collect", default=["mom2"], type=lambda x: x.split(","))
     aa("--sample_size", default=100000, type=lambda x: None if x == "all" else int(x))
@@ -99,12 +103,52 @@ def layer_stats(
         # from datasets import Dataset
         # raw_ds = Dataset.from_file('XXX/XXX/wikipedia-train.arrow')
         # raw_ds = {'train': raw_ds}
-        raw_ds = load_dataset(
-            ds_name,
-            # dict(wikitext="wikitext-103-raw-v1", wikipedia="20200501.en")[ds_name],
-            dict(wikitext="wikitext-103-raw-v1", wikipedia="20220301.en")[ds_name],
-            trust_remote_code=True,
-        )
+        if ds_name == "ripple_recent":
+            import pandas as pd
+            # import pdb
+
+            # pdb.set_trace()
+
+            jsonl_obj = pd.read_json(
+                path_or_buf="/data/users/zliu/KE-by-CP/data/ripple_edits/meta_train_recent/train_all_queries.jsonl",
+                lines=True,
+            )
+            jsonl_obj["text"] = jsonl_obj.apply(lambda x: x.text + tokenizer.eos_token, axis=1)
+
+            raw_ds = DatasetDict({"train": Dataset.from_pandas(jsonl_obj[["text"]])})
+        elif ds_name == "ripple_recent+popular":
+            import pandas as pd
+            # import pdb
+
+            # pdb.set_trace()
+            jsonl_obj = pd.read_json(
+                path_or_buf="/data/users/zliu/KE-by-CP/data/ripple_edits/meta_train_recent+popular/train_all_queries.jsonl",
+                lines=True,
+            )
+            jsonl_obj["text"] = jsonl_obj.apply(lambda x: x.text + tokenizer.eos_token, axis=1)
+
+            raw_ds = DatasetDict({"train": Dataset.from_pandas(jsonl_obj[["text"]])})
+        elif ds_name == "ripple_all":
+            import pandas as pd
+            # import pdb
+
+            # pdb.set_trace()
+            jsonl_obj = pd.read_json(
+                path_or_buf="/data/users/zliu/KE-by-CP/data/ripple_edits/meta_train/all/train_mend.jsonl",
+                lines=True,
+            )
+
+            jsonl_obj["text"] = jsonl_obj.apply(lambda x: x.context + tokenizer.eos_token, axis=1)
+
+            raw_ds = DatasetDict({"train": Dataset.from_pandas(jsonl_obj[["text"]])})
+
+        else:
+            raw_ds = load_dataset(
+                ds_name,
+                # dict(wikitext="wikitext-103-raw-v1", wikipedia="20200501.en")[ds_name],
+                dict(wikitext="wikitext-103-raw-v1", wikipedia="20220301.en")[ds_name],
+                trust_remote_code=True,
+            )
         if hasattr(model.config, "n_positions"):
             maxlen = model.config.n_positions
         elif hasattr(model.config, "max_sequence_length"):
@@ -129,7 +173,7 @@ def layer_stats(
         return TokenizedDataset(raw_ds["train"], tokenizer, maxlen=maxlen)
 
     # Continue with computation of statistics
-    batch_size = 100  # Examine this many dataset texts at once
+    batch_size = 1  # 00  # Examine this many dataset texts at once
     if hasattr(model.config, "n_positions"):
         npos = model.config.n_positions
     elif hasattr(model.config, "max_sequence_length"):

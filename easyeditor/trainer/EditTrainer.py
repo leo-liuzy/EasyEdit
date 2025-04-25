@@ -32,7 +32,7 @@ class EditTrainer(BaseTrainer):
                 self.lr_opt.load_state_dict(self.archive["lr_opt"])
         else:
             self.lr_opt = None
-
+        
     def simple_edit(self, batch, training: bool):
         self.model.train(training)
         self.original_model.train(training)
@@ -236,7 +236,7 @@ class EditTrainer(BaseTrainer):
                 break
             _, _, _, _, info_dict = self.edit_step(batch, training=False)
             averager.add(info_dict)
-            print(f"[{val_step}]", info_dict["edit/acc"])
+            # print(f"[{val_step}]", info_dict["edit/acc"])
 
             if log and (val_step + 1) % self.config.log_interval == 0:
                 self._inline_validation_log(val_step, averager.average(), start_time, steps)

@@ -16,6 +16,9 @@ def compute_ks(
     layer: int,
     context_templates: List[str],
 ):
+    import pdb
+
+    # pdb.set_trace()
     layer_ks = get_module_input_output_at_words(
         model,
         tok,
@@ -26,12 +29,7 @@ def compute_ks(
             for context_type in context_templates
             for context in context_type
         ],
-        words=[
-            request["subject"]
-            for request in requests
-            for context_type in context_templates
-            for _ in context_type
-        ],
+        words=[request["subject"] for request in requests for context_type in context_templates for _ in context_type],
         module_template=hparams.rewrite_module_tmp,
         fact_token_strategy=hparams.fact_token,
     )[0]

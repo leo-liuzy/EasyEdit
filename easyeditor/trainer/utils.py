@@ -103,13 +103,13 @@ def _logits(x):
 
 
 def add_sep(tokenizer, model):
-    tokenizer.add_special_tokens({'sep_token': '[SEP]'})
+    tokenizer.add_special_tokens({"sep_token": "[SEP]"})
     # model.resize_token_embeddings(len(tokenizer))
     # model.lm_head.weight.data[-1, :] = model.lm_head.weight.data.mean(0)
 
 
 def add_padding(tokenizer, model):
-    tokenizer.add_special_tokens({'pad_token': '[PAD]'})
+    tokenizer.add_special_tokens({"pad_token": "[PAD]"})
     model.resize_token_embeddings(len(tokenizer))
     model.transformer.wte.weight.data[-1] = model.transformer.wte.weight.data.mean(0)
 
@@ -155,9 +155,7 @@ def load_archive(path):
         models_dir = os.path.join(full_run_dir, "models")
         models = os.listdir(models_dir)
         non_bk = [m for m in models if not m.endswith(".bk")]
-        assert (
-            len(non_bk) == 1
-        ), f"Expected a single model in {models_dir}, got {len(non_bk)}"
+        assert len(non_bk) == 1, f"Expected a single model in {models_dir}, got {len(non_bk)}"
         path = os.path.join(models_dir, non_bk[0])
 
     LOG.info(f"Loading checkpoint from {path}")
@@ -183,7 +181,7 @@ def flatten_dict(d):
 
 class EarlyStopper:
     def __init__(self, patience: int, key: str):
-        self.best_value = -1 if 'acc' in key else 1e9
+        self.best_value = -1 if "acc" in key else 1e9
         self.best_iter = 0
         self.current_iter = 0
         self.key = key
@@ -193,7 +191,7 @@ class EarlyStopper:
     def update(self, idx, stats):
         assert self.key in stats, f"'{self.key}' not in stats dict"
         value = stats[self.key]
-        if 'acc' in self.key:
+        if "acc" in self.key:
             new_best = value > self.best_value
         else:
             new_best = value < self.best_value
@@ -240,10 +238,7 @@ class RunningStatAverager:
                 if self.compute_ppl:
                     average[f"perplexity/{name}"] = math.e ** average[k]
 
-        return {
-            k: v if not isinstance(v, torch.Tensor) else v.item()
-            for k, v in average.items()
-        }
+        return {k: v if not isinstance(v, torch.Tensor) else v.item() for k, v in average.items()}
 
     def reset(self):
         self.underlying = defaultdict(list)
@@ -263,9 +258,7 @@ class EditBatchSampler:
         self.edit_position = 0
 
     def sample(self, batch_size):
-        assert (
-            batch_size > self.n_edits
-        ), "Batch size is interpreted such that batch_size = n_edits + n_loc"
+        assert batch_size > self.n_edits, "Batch size is interpreted such that batch_size = n_edits + n_loc"
 
         if self.memorize_mode:
             return list(range(self.n_edits)), list(range(batch_size - self.n_edits))
@@ -303,10 +296,7 @@ if __name__ == "__main__":
 
     stopper = EarlyStopper(1000, "loss/edit")
 
-    data = [
-        (100 * idx, {"loss/edit": 2 ** (1 - idx / 10) + random.random()})
-        for idx in range(100)
-    ]
+    data = [(100 * idx, {"loss/edit": 2 ** (1 - idx / 10) + random.random()}) for idx in range(100)]
 
     for d in data:
         stopper.update(*d)

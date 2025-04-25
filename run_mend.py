@@ -31,7 +31,7 @@ class StrEnum(str, Enum):
         return f"'{str(self)}'"
 
 
-class EditLossType(StrEnum):
+class EditLoss(StrEnum):
     sft = "p(y|x)"
 
     clm = "p(x)"
@@ -93,7 +93,7 @@ def main(args):
         mend_rewriter = MendRewriteExecutor()
         mend_rewriter.init_model(model, tokenizer, hparams)
         for q_i, q in enumerate(ex["single_hop_efficacy"]):
-            if args.edit_loss == EditLossType.sft:
+            if args.edit_loss == EditLoss.sft:
                 prompts = [q["question"]]
                 target_news = [q["answer"]]
 
@@ -193,7 +193,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Description of your program")
     parser.add_argument(
         "--edit_loss",
-        type=EditLossType,
+        type=EditLoss,
         # choices=["y|x", "x"],
         required=True,
     )
