@@ -25,9 +25,7 @@ class TokenizedDataset(Dataset):
         text = self.text_dataset[i]
         if self.field is not None:
             text = text[self.field]
-        token_list = self.tokenizer.encode(
-            text, truncation=True, max_length=self.maxlen
-        )
+        token_list = self.tokenizer.encode(text, truncation=True, max_length=self.maxlen)
         position_ids = list(range(len(token_list)))
         attention_mask = [1] * len(token_list)
         return dict(
@@ -85,8 +83,7 @@ def make_padded_batch(items):
     if max_len == 0:
         return {k: torch.zeros((0, 0), dtype=torch.long) for k in items[0]}
     return {
-        k: pad_sequence([d[k] for d in items if len(d["input_ids"])], batch_first=True)
-        for k, v in items[0].items()
+        k: pad_sequence([d[k] for d in items if len(d["input_ids"])], batch_first=True) for k, v in items[0].items()
     }
 
 
