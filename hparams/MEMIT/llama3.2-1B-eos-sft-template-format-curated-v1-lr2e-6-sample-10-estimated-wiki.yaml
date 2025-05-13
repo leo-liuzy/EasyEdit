@@ -1,6 +1,6 @@
 alg_name: "MEMIT"
-model_name: "/data/users/zliu/mend/models/Llama-3.2-1B-eos-sft-template-format-curated-v1-lr2e-6-sample-10"
-stats_dir: "/data/users/zliu/EasyEdit/data/stats"
+model_name: "/u/zliu/datastor1/mend/models/Llama-3.2-1B-eos-sft-template-format-curated-v1-lr2e-6-sample-10"
+stats_dir: "/u/zliu/datastor1/EasyEdit/data/stats"
 device: 0
 # layers: [4, 5, 6, 7, 8]
 layers: [1, 2, 3, 4, 5]

@@ -111,7 +111,7 @@ def layer_stats(
             # pdb.set_trace()
 
             jsonl_obj = pd.read_json(
-                path_or_buf="/data/users/zliu/KE-by-CP/data/ripple_edits/meta_train_recent/train_all_queries.jsonl",
+                path_or_buf=f"{os.getenv('PROJ_PLAYGROUND')}/KE-by-CP/data/ripple_edits/meta_train_recent/train_all_queries.jsonl",
                 lines=True,
             )
             jsonl_obj["text"] = jsonl_obj.apply(lambda x: x.text + tokenizer.eos_token, axis=1)
@@ -123,7 +123,7 @@ def layer_stats(
 
             # pdb.set_trace()
             jsonl_obj = pd.read_json(
-                path_or_buf="/data/users/zliu/KE-by-CP/data/ripple_edits/meta_train_recent+popular/train_all_queries.jsonl",
+                path_or_buf=f"{os.getenv('PROJ_PLAYGROUND')}/data/ripple_edits/meta_train_recent+popular/train_all_queries.jsonl",
                 lines=True,
             )
             jsonl_obj["text"] = jsonl_obj.apply(lambda x: x.text + tokenizer.eos_token, axis=1)
@@ -134,7 +134,7 @@ def layer_stats(
             # import pdb
 
             jsonl_obj = pd.read_json(
-                path_or_buf="/data/users/zliu/KE-by-CP/data/ripple_edits/meta_train/all/train_mend.jsonl",
+                path_or_buf=f"{os.getenv('PROJ_PLAYGROUND')}/KE-by-CP/data/ripple_edits/meta_train/all/train_mend.jsonl",
                 lines=True,
             )
 
@@ -144,9 +144,9 @@ def layer_stats(
 
         elif ds_name == "synstory_4K":
             import pandas as pd
-
+            
             jsonl_obj = pd.read_json(
-                path_or_buf="/data/users/zliu/KE-by-CP/data/debug_meta_train/syn_data_neurips/4Ktrain_data_100percent_frozen/train_mend.jsonl",
+                path_or_buf=f"{os.getenv('PROJ_PLAYGROUND')}/KE-by-CP/data/debug_meta_train/syn_data_neurips/4Ktrain_data_100percent_frozen/train_mend.jsonl",
                 lines=True,
             )
 
