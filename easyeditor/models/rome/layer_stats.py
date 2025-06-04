@@ -57,7 +57,7 @@ def main():
     for layer_num in args.layers:
         print(
             f"Computing stats for layer {layer_num} of {args.model_name} "
-            f'over {args.sample_size or "all"} samples of {args.dataset}. '
+            f"over {args.sample_size or 'all'} samples of {args.dataset}. "
             "Note, the statistics are collected over the inputs to the second MLP layer, "
             "or equivalently the outputs of the first MLP layer."
         )
@@ -137,11 +137,23 @@ def layer_stats(
                 path_or_buf="/data/users/zliu/KE-by-CP/data/ripple_edits/meta_train/all/train_mend.jsonl",
                 lines=True,
             )
-
-            jsonl_obj["text"] = jsonl_obj.apply(lambda x: x.context + tokenizer.eos_token, axis=1)
+            # ! this used to be x.context + tokenizer.eos_token (buggy)
+            jsonl_obj["text"] = jsonl_obj.apply(lambda x: x.context + x.completion + tokenizer.eos_token, axis=1)
 
             raw_ds = DatasetDict({"train": Dataset.from_pandas(jsonl_obj[["text"]])})
+        elif ds_name == "synstory_4K":
+            import pandas as pd
+            # import pdb
 
+            # pdb.set_trace()
+            jsonl_obj = pd.read_json(
+                path_or_buf="/data/users/zliu/KE-by-CP/data/ripple_edits/meta_train/all/train_mend.jsonl",
+                lines=True,
+            )
+
+            jsonl_obj["text"] = jsonl_obj.apply(lambda x: x.context + x.completion + tokenizer.eos_token, axis=1)
+
+            raw_ds = DatasetDict({"train": Dataset.from_pandas(jsonl_obj[["text"]])})
         else:
             raw_ds = load_dataset(
                 ds_name,
