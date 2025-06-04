@@ -1,4 +1,5 @@
 import os
+import pdb
 from pathlib import Path
 
 import torch
@@ -39,7 +40,7 @@ def main():
     aa(
         "--dataset",
         default="wikipedia",
-        choices=["wikitext", "wikipedia", "ripple_recent", "ripple_recent+popular", "ripple_all"],
+        choices=["wikitext", "wikipedia", "ripple_recent", "ripple_recent+popular", "ripple_all", "synstory_4K"],
     )
     aa("--layers", default=[17], type=lambda x: list(map(int, x.split(","))))
     aa("--to_collect", default=["mom2"], type=lambda x: x.split(","))
@@ -110,7 +111,7 @@ def layer_stats(
             # pdb.set_trace()
 
             jsonl_obj = pd.read_json(
-                path_or_buf="/data/users/zliu/KE-by-CP/data/ripple_edits/meta_train_recent/train_all_queries.jsonl",
+                path_or_buf=f"{os.getenv('PROJ_PLAYGROUND')}/KE-by-CP/data/ripple_edits/meta_train_recent/train_all_queries.jsonl",
                 lines=True,
             )
             jsonl_obj["text"] = jsonl_obj.apply(lambda x: x.text + tokenizer.eos_token, axis=1)
@@ -122,7 +123,7 @@ def layer_stats(
 
             # pdb.set_trace()
             jsonl_obj = pd.read_json(
-                path_or_buf="/data/users/zliu/KE-by-CP/data/ripple_edits/meta_train_recent+popular/train_all_queries.jsonl",
+                path_or_buf=f"{os.getenv('PROJ_PLAYGROUND')}/data/ripple_edits/meta_train_recent+popular/train_all_queries.jsonl",
                 lines=True,
             )
             jsonl_obj["text"] = jsonl_obj.apply(lambda x: x.text + tokenizer.eos_token, axis=1)
@@ -132,27 +133,30 @@ def layer_stats(
             import pandas as pd
             # import pdb
 
-            # pdb.set_trace()
             jsonl_obj = pd.read_json(
-                path_or_buf="/data/users/zliu/KE-by-CP/data/ripple_edits/meta_train/all/train_mend.jsonl",
+                path_or_buf=f"{os.getenv('PROJ_PLAYGROUND')}/KE-by-CP/data/ripple_edits/meta_train/all/train_mend.jsonl",
                 lines=True,
             )
-            # ! this used to be x.context + tokenizer.eos_token (buggy)
-            jsonl_obj["text"] = jsonl_obj.apply(lambda x: x.context + x.completion + tokenizer.eos_token, axis=1)
 
+            jsonl_obj["text"] = jsonl_obj.apply(lambda x: x.context + " " + x.completion + tokenizer.eos_token, axis=1)
+            # pdb.set_trace()
             raw_ds = DatasetDict({"train": Dataset.from_pandas(jsonl_obj[["text"]])})
         elif ds_name == "synstory_4K":
             import pandas as pd
             # import pdb
 
-            # pdb.set_trace()
+        elif ds_name == "synstory_4K":
+            import pandas as pd
+            
             jsonl_obj = pd.read_json(
-                path_or_buf="/data/users/zliu/KE-by-CP/data/ripple_edits/meta_train/all/train_mend.jsonl",
+                path_or_buf=f"{os.getenv('PROJ_PLAYGROUND')}/KE-by-CP/data/debug_meta_train/syn_data_neurips/4Ktrain_data_100percent_frozen/train_mend.jsonl",
                 lines=True,
             )
 
-            jsonl_obj["text"] = jsonl_obj.apply(lambda x: x.context + x.completion + tokenizer.eos_token, axis=1)
-
+            jsonl_obj["text"] = jsonl_obj.apply(
+                lambda x: str(x.context) + " " + str(x.completion) + tokenizer.eos_token, axis=1
+            )
+            # pdb.set_trace()
             raw_ds = DatasetDict({"train": Dataset.from_pandas(jsonl_obj[["text"]])})
         else:
             raw_ds = load_dataset(
@@ -182,7 +186,8 @@ def layer_stats(
 
         if batch_tokens is not None and batch_tokens < maxlen:
             maxlen = batch_tokens
-        return TokenizedDataset(raw_ds["train"], tokenizer, maxlen=maxlen)
+        ret = TokenizedDataset(raw_ds["train"], tokenizer, maxlen=maxlen)
+        return ret
 
     # Continue with computation of statistics
     batch_size = 1  # 00  # Examine this many dataset texts at once

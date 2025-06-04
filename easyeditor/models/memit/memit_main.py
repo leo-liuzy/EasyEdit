@@ -16,6 +16,8 @@ from .compute_ks import compute_ks
 from .compute_z import compute_z, get_module_input_output_at_words, find_fact_lookup_idx
 from .memit_hparams import MEMITHyperParams
 
+import pdb
+
 # Cache variable(s)
 CONTEXT_TEMPLATES_CACHE = None
 COV_CACHE = {}
@@ -44,7 +46,6 @@ def apply_memit_to_model(
         model = deepcopy(model)
 
     deltas = execute_memit(model, tok, requests, hparams, cache_template=cache_template)
-    # import pdb
 
     print(model.model.layers[12].mlp.down_proj.weight.sum())
     # pdb.set_trace()
