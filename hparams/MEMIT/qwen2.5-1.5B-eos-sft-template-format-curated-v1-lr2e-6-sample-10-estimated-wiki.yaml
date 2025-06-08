@@ -1,6 +1,8 @@
 alg_name: "MEMIT"
-model_name: "/data/users/zliu/mend/models/Qwen2.5-1.5B-eos-sft-template-format-curated-v1-lr2e-6-sample-10"
-stats_dir: "/data/users/zliu/EasyEdit/data/stats"
+# model_name: "/data/users/zliu/mend/models/Qwen2.5-1.5B-eos-sft-template-format-curated-v1-lr2e-6-sample-10"
+model_name: "/home1/09636/zyliu/work/mend/models/Qwen2.5-1.5B-eos-sft-template-format-curated-v1-lr2e-6-sample-10"
+# stats_dir: "/data/users/zliu/EasyEdit/data/stats"
+stats_dir: "/home1/09636/zyliu/work/EasyEdit/data/stats"
 device: 0
 # layers: [4, 5, 6, 7, 8]
 layers: [4, 5, 6, 7, 8]
