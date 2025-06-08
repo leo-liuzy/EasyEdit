@@ -141,9 +141,6 @@ def layer_stats(
             jsonl_obj["text"] = jsonl_obj.apply(lambda x: x.context + " " + x.completion + tokenizer.eos_token, axis=1)
             # pdb.set_trace()
             raw_ds = DatasetDict({"train": Dataset.from_pandas(jsonl_obj[["text"]])})
-        elif ds_name == "synstory_4K":
-            import pandas as pd
-            # import pdb
 
         elif ds_name == "synstory_4K":
             import pandas as pd
