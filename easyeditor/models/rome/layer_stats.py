@@ -58,7 +58,7 @@ def main():
     for layer_num in args.layers:
         print(
             f"Computing stats for layer {layer_num} of {args.model_name} "
-            f'over {args.sample_size or "all"} samples of {args.dataset}. '
+            f"over {args.sample_size or 'all'} samples of {args.dataset}. "
             "Note, the statistics are collected over the inputs to the second MLP layer, "
             "or equivalently the outputs of the first MLP layer."
         )
@@ -141,6 +141,9 @@ def layer_stats(
             jsonl_obj["text"] = jsonl_obj.apply(lambda x: x.context + " " + x.completion + tokenizer.eos_token, axis=1)
             # pdb.set_trace()
             raw_ds = DatasetDict({"train": Dataset.from_pandas(jsonl_obj[["text"]])})
+        elif ds_name == "synstory_4K":
+            import pandas as pd
+            # import pdb
 
         elif ds_name == "synstory_4K":
             import pandas as pd
